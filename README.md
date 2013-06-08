@@ -6,7 +6,7 @@ Users can listen to the correct pronunciation of each letter and can alos practi
 by drawing them on the screen.
 
 
-# Credits and license
+## Credits and license
 
 FarsiAlphabet was created by Michele Sama and Panteha Saeedi during one of their travels to Iran.
 All the rights are reserved.
@@ -15,9 +15,9 @@ The source code and all the material contained in this repository is released un
 Please refer to the license file for additional information.
 
 
-# Contributors
+## Contributors
 
-This is a full list of contributors in alphabetical order. 
+This is a full list of contributors in alphabetical order including their GitHub username. 
 
 Michele Sama (@msama)
 Panteha Saeedi (@psaeedi)
