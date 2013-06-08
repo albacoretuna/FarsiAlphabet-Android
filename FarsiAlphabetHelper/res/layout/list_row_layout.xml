@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/letterIsolated"
+        android:paddingBottom="1dp" >
+
+        <TextView
+            android:id="@+id/letterEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="A"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/holo_blue_bright"
+            android:textSize="@dimen/secondary_letter_size" />
+
+        <TextView
+            android:id="@+id/letterMiddle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="A"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/holo_blue_bright"
+            android:textSize="@dimen/secondary_letter_size" />
+
+        <TextView
+            android:id="@+id/letterBegin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="fill_horizontal"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="A"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/holo_blue_bright"
+            android:textSize="@dimen/secondary_letter_size" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/letterName"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/letterIsolated"
+        android:layout_toRightOf="@+id/letterIsolated"
+        android:gravity="center"
+        android:padding="2dp"
+        android:text="Name"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/letterIsolated"
+        android:layout_width="@dimen/main_letter_box_size"
+        android:layout_height="@dimen/main_letter_box_size"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:paddingRight="15dp"
+        android:text="A"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="@dimen/main_letter_size" />
+
+</RelativeLayout>

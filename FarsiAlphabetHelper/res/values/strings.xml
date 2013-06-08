@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Farsi alphabet </string>
+    <string name="hello_world">Hello world!</string>
+    <string name="label_letter_begin">Begin</string>
+    <string name="label_letter_middle">Middle</string>
+    <string name="label_letter_end">End</string>
+    <string name="title_activity_letter_canvas">LetterCanvasActivity</string>
+    <string name="letter_canvas_hint">SLidl over the letter to draw it</string>
+    <string name="canvas_toast_message">Slide your finger over the letter to practice in drawing it.</string>
+    <string name="welcome_toast_message">Click on the red letters to hear their pronunciations. Click on the blue letters to practive drawing.</string>
+    <string name="letter_name">Letter</string>
+    <string name="action_about">About</string>
+    <string name="action_clear">Clear</string>
+    <string name="title_activity_about">AboutActivity</string>
+    <string name="action_settings">Settings</string>
+	<string name="about_title">About Farsi alphabet</string>   
+</resources>
