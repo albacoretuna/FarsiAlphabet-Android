@@ -17,7 +17,7 @@ Please refer to the license file for additional information.
 
 ## Contributors
 
-This is a full list of contributors in alphabetical order including their GitHub username. 
+This is a full list of contributors in alphabetical order. 
 
-Michele Sama (@msama)
-Panteha Saeedi (@psaeedi)
+* [Michele Sama](https://github.com/msama): project management and Android development
+* [Panteha Saeedi](https://github.com/psaeedi): Android development, UI/UX design and Google Play management
