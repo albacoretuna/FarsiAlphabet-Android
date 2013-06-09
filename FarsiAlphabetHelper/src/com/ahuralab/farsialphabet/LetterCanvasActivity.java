@@ -9,7 +9,7 @@ import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 /**
@@ -40,7 +40,7 @@ public class LetterCanvasActivity extends Activity {
 		}
 		
 		// Reset
-		Button resetButton = (Button) findViewById(R.id.buttonResetCanvas);
+		ImageButton resetButton = (ImageButton) findViewById(R.id.buttonResetCanvas);
 		resetButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
