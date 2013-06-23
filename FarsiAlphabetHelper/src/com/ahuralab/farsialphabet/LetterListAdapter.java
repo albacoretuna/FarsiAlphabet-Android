@@ -39,7 +39,7 @@ public class LetterListAdapter extends BaseAdapter {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		final LetterItem item = (LetterItem) getItem(position);
-		final WordItem  wordItem = (WordItem) getItem(position);
+		final WordItem  wordItem = (WordItem) exampleItems.get(position);
 		
 		View letterView = null;
 		if (convertView == null) {

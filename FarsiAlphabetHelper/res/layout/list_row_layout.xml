@@ -20,7 +20,7 @@
             android:gravity="center"
             android:text="A"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/holo_blue_bright"
+            android:textColor="#01C5BB"
             android:textSize="@dimen/secondary_letter_size" />
 
         <TextView
@@ -31,7 +31,7 @@
             android:gravity="center"
             android:text="A"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/holo_blue_bright"
+            android:textColor="#01C5BB"
             android:textSize="@dimen/secondary_letter_size" />
 
         <TextView
@@ -43,7 +43,7 @@
             android:gravity="center"
             android:text="A"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/holo_blue_bright"
+            android:textColor="#01C5BB"
             android:textSize="@dimen/secondary_letter_size" />
     </LinearLayout>
 
@@ -69,7 +69,7 @@
         android:paddingRight="15dp"
         android:text="A"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@android:color/holo_red_light"
+        android:textColor="#FF0000"
         android:textSize="@dimen/main_letter_size" />
 
 </RelativeLayout>

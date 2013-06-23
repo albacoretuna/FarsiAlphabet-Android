@@ -18,8 +18,8 @@
 	<string name="no_thanks">No thanks</string>
 	<string name="remind_me_later">Remind me later</string>
 	
-	<string name="letter_begin" formatted="false"> Use "%s" in the beginning of the word. </string>
-	<string name="letter_middle" formatted="false">Use "%s" in the middle of the word,</string>
-	<string name="letter_end" formatted="false"> Use "%s" in the end of the word,</string>
+	<string name="letter_begin" formatted="false"> Use "%s" in the beginning of the word, for example "%s" (%s).</string>
+	<string name="letter_middle" formatted="false">Use "%s" in the middle of the word, for example "%s" (%s).</string>
+	<string name="letter_end" formatted="false"> Use "%s" in the end of the word, for example "%s" (%s).</string>
 	
 </resources>
