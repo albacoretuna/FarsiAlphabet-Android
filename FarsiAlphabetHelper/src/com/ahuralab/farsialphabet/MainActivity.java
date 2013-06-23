@@ -1,8 +1,13 @@
 package com.ahuralab.farsialphabet;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -14,6 +19,8 @@ import android.widget.Toast;
  *
  */
 public class MainActivity extends Activity {
+	
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +29,56 @@ public class MainActivity extends Activity {
 		ListView list = (ListView) findViewById(R.id.letterList);
 		list.setAdapter(new LetterListAdapter(this));
 		
+		// Increment app opened counter
+		showRateUsDialogIfNecessary();
+		
 		Toast.makeText(getApplicationContext(),
 				R.string.welcome_toast_message, 
 				Toast.LENGTH_SHORT).show();
 
+	}
+
+	private void showRateUsDialogIfNecessary() {
+		AppPreferencesWrapper prefs = new AppPreferencesWrapper(this);
+		int counter = prefs.incrementAppOpenedCounter();
+		
+		if (counter % 5 == 0 && !prefs.getShouldAskToRate()) {
+			// Show rate us dialog
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+	        builder
+	        		.setTitle(R.string.please_rate_use_title)
+	        		.setMessage(R.string.please_rate_use_text)
+	        		.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+	        			public void onClick(DialogInterface dialog, int id) {
+	                        // Go and rate
+							Uri uri = Uri.parse("market://details?id=" + MainActivity.this.getPackageName());
+							Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
+							try {
+								MainActivity.this.startActivity(goToMarket);
+								AppPreferencesWrapper prefs = new AppPreferencesWrapper(MainActivity.this);
+		                		prefs.setShouldAskToRate(false);
+							} catch (ActivityNotFoundException e) {
+								Log.w("MainActivity",
+										"Could not open marketplace application.");
+                            }
+	                    }
+	        		})
+	               	.setNegativeButton(R.string.no_thanks, new DialogInterface.OnClickListener() {
+	                    public void onClick(DialogInterface dialog, int id) {
+	                        // User cancelled the dialog
+	                    	AppPreferencesWrapper prefs = new AppPreferencesWrapper(MainActivity.this);
+	                		prefs.setShouldAskToRate(false);
+	                    }
+	               })
+	               .setNeutralButton(R.string.remind_me_later, new DialogInterface.OnClickListener() {
+	                    public void onClick(DialogInterface dialog, int id) {
+	                        // User want to be reminded later
+	                    	// Nothing to do.
+	                    }
+	               });
+	        // Create the AlertDialog object and show it
+	        builder.show();
+		}
 	}
 
 	@Override
