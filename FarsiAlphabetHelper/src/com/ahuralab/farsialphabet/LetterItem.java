@@ -14,7 +14,7 @@ public class LetterItem {
 	public static List<LetterItem> createFarsi() {
 		List<LetterItem> items = new ArrayList<LetterItem>();
 		// TODO add the proper sounds
-    	items.add(new LetterItem("`alef", "ﺍ", "ﺍ", "ـا", "ـا", R.raw.alef));
+    	items.add(new LetterItem("`alef", "ﺍ", "آ", "ـا", "ـا", R.raw.alef));
     	items.add(new LetterItem("be", "ب", "ﺑ", "ـبـ", "ـب", R.raw.be));
     	items.add(new LetterItem("pe", "پ", "ﭘ", "ـپـ", "ـپ", R.raw.pe));
     	items.add(new LetterItem("te", "ﺕ", "ﺗ", "ـتـ", "ـت", R.raw.te));
