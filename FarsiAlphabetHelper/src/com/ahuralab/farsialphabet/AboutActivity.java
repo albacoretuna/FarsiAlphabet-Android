@@ -15,10 +15,10 @@ public class AboutActivity extends Activity {
 		setContentView(R.layout.activity_about);
 		// Show the Up button in the action bar.
 		setupActionBar();
-		
+
 		WebView webview = (WebView) findViewById(R.id.aboutWebView);
 		webview.loadUrl("file:///android_asset/UI/about.html");
-		
+
 		setTitle(R.string.about_title);
 	}
 

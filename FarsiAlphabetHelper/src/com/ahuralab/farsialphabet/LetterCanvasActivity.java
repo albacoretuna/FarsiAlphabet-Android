@@ -10,35 +10,40 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
  * 
  * @author msama (michele.sama@gmail.com)
  * @author psaeedi (panteha.s@gmail.com)
- *
+ * 
  */
 public class LetterCanvasActivity extends Activity {
 
 	public static final String LETTER_INTENT_EXTRA = "letter";
-	
+
 	private CanvasTextView canvas;
-	
+	private TextView infoText;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_letter_canvas);
 		// Show the Up button in the action bar.
 		setupActionBar();
-		
+
+		infoText = (TextView) findViewById(R.id.letterInfo);
+
 		canvas = (CanvasTextView) findViewById(R.id.letterCanvas);
 		Intent intent = getIntent();
-		String letter = intent.getStringExtra(LETTER_INTENT_EXTRA);
-		if (letter != null) {
-			canvas.setText(letter);
-			setTitle("Practice drawing: " + letter);
+		String[] dataStrings = intent.getStringArrayExtra(LETTER_INTENT_EXTRA);
+		if (dataStrings != null) {
+			canvas.setText(dataStrings[0]);
+			setTitle("Practice drawing: " + dataStrings[0]);
+			setTextViewInfo(dataStrings[1], dataStrings[0], dataStrings[2], dataStrings[3]);
 		}
-		
+
 		// Reset
 		ImageButton resetButton = (ImageButton) findViewById(R.id.buttonResetCanvas);
 		resetButton.setOnClickListener(new View.OnClickListener() {
@@ -47,13 +52,30 @@ public class LetterCanvasActivity extends Activity {
 				canvas.resetCanvas();
 			}
 		});
-	
-		Toast.makeText(getApplicationContext(),
-				R.string.canvas_toast_message, 
+
+		Toast.makeText(getApplicationContext(), R.string.canvas_toast_message,
 				Toast.LENGTH_SHORT).show();
 	}
 
-	
+	private void setTextViewInfo(String position, String letter, String farsiExa, String englishExa) {
+
+		if (position.equals("begin")) {
+			infoText.setText(String.format(LetterCanvasActivity.this
+					.getResources().getString(R.string.letter_begin), letter, farsiExa, englishExa));
+		}
+
+		else if (position.equals("middle")) {
+			infoText.setText(String.format(LetterCanvasActivity.this
+					.getResources().getString(R.string.letter_middle), letter, farsiExa, englishExa));
+		}
+
+		else if (position.equals("end")) {
+			infoText.setText(String.format(LetterCanvasActivity.this
+					.getResources().getString(R.string.letter_end), letter, farsiExa, englishExa));
+		}
+
+	}
+
 	/**
 	 * Set up the {@link android.app.ActionBar}, if the API is available.
 	 */
@@ -71,25 +93,24 @@ public class LetterCanvasActivity extends Activity {
 		return true;
 	}
 
-	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-			case android.R.id.home: {
-				// This ID represents the Home or Up button. In the case of this
-				// activity, the Up button is shown. Use NavUtils to allow users
-				// to navigate up one level in the application structure. For
-				// more details, see the Navigation pattern on Android Design:
-				//
-				// http://developer.android.com/design/patterns/navigation.html#up-vs-back
-				//
-				NavUtils.navigateUpFromSameTask(this);
-				return true;
-			}
-			case R.id.action_clear: {
-				canvas.resetCanvas();
-				return true;
-			}
+		case android.R.id.home: {
+			// This ID represents the Home or Up button. In the case of this
+			// activity, the Up button is shown. Use NavUtils to allow users
+			// to navigate up one level in the application structure. For
+			// more details, see the Navigation pattern on Android Design:
+			//
+			// http://developer.android.com/design/patterns/navigation.html#up-vs-back
+			//
+			NavUtils.navigateUpFromSameTask(this);
+			return true;
+		}
+		case R.id.action_clear: {
+			canvas.resetCanvas();
+			return true;
+		}
 		}
 		return super.onOptionsItemSelected(item);
 	}

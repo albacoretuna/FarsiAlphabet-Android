@@ -20,19 +20,26 @@ import android.widget.TextView;
  *
  */
 public class LetterListAdapter extends BaseAdapter {
+	
+	public static final String LETTER_MIDDLE = "middle";
+	public static final String LETTER_BEGIN = "begin";
+	public static final String LETTER_END = "end";
 
 	private final Context context;
 	
 	private final List<LetterItem> items;
+	private final List<WordItem> exampleItems;
 
 	public LetterListAdapter(Context context) {
 		this.context = context; 
 		items = LetterItem.createFarsi();
+		exampleItems = WordItem.createFarsiRelatedWords();
     }
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		final LetterItem item = (LetterItem) getItem(position);
+		final WordItem  wordItem = (WordItem) getItem(position);
 		
 		View letterView = null;
 		if (convertView == null) {
@@ -53,15 +60,18 @@ public class LetterListAdapter extends BaseAdapter {
 				
         TextView beginView = ((TextView) letterView.findViewById(R.id.letterBegin));
         beginView.setText(item.begin);
-        beginView.setOnClickListener(new DravingOnClickListener(context, beginView.getText().toString()));
+        String [] infoLetterBegin = {beginView.getText().toString(), LETTER_BEGIN, wordItem.beginFarsi, wordItem.beginEnglish};
+        beginView.setOnClickListener(new DrawingOnClickListener(context, infoLetterBegin ));
         
         TextView middleView = ((TextView) letterView.findViewById(R.id.letterMiddle));
         middleView.setText(item.middle);
-        middleView.setOnClickListener(new DravingOnClickListener(context, middleView.getText().toString()));
+        String [] infoLetterMiddle = {middleView.getText().toString(), LETTER_MIDDLE, wordItem.middleFarsi, wordItem.middleEnglis};
+        middleView.setOnClickListener(new DrawingOnClickListener(context, infoLetterMiddle));
         
         TextView endView = ((TextView) letterView.findViewById(R.id.letterEnd));
         endView.setText(item.end);
-        endView.setOnClickListener(new DravingOnClickListener(context, endView.getText().toString()));
+        String [] infoLetterEnd = {endView.getText().toString(), LETTER_END, wordItem.endFarsi, wordItem.endEnglish};
+        endView.setOnClickListener(new DrawingOnClickListener(context, infoLetterEnd));
         
 		return letterView;
 	}
@@ -118,20 +128,21 @@ public class LetterListAdapter extends BaseAdapter {
     	
     }
 
-    private static class DravingOnClickListener implements View.OnClickListener {
+    private static class DrawingOnClickListener implements View.OnClickListener {
     	
     	private final Context context;
-    	private final String letter;
+    	private final String[] infoLetter ;
 		
-    	public DravingOnClickListener(Context context, String letter) {
+    	public DrawingOnClickListener(Context context, String[] infoLetter) {
 			this.context = context;
-			this.letter = letter;
+			this.infoLetter = infoLetter;
 		}
-		
+    	
+    	
     	@Override
 		public void onClick(View v) {
 			Intent intent = new Intent(context, LetterCanvasActivity.class);
-			intent.putExtra(LetterCanvasActivity.LETTER_INTENT_EXTRA, letter);
+			intent.putExtra(LetterCanvasActivity.LETTER_INTENT_EXTRA, infoLetter);
 			context.startActivity(intent);
 		}
     	

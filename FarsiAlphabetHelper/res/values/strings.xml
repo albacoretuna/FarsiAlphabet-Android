@@ -10,10 +10,16 @@
     <string name="title_activity_about">AboutActivity</string>
     <string name="action_settings">Settings</string>
 	<string name="about_title">About Farsi alphabet</string>   
+	<string name="about_letter">Where we write the letter like below?</string> 
 	
 	<string name="please_rate_use_title">Please rate us!</string>
 	<string name="please_rate_use_text">Do you like Learn Farsi Alphabet? Rate us on Google Play to help improving this app!</string>
 	<string name="yes">Yes</string>
 	<string name="no_thanks">No thanks</string>
 	<string name="remind_me_later">Remind me later</string>
+	
+	<string name="letter_begin" formatted="false"> Use "%s" in the beginning of the word. </string>
+	<string name="letter_middle" formatted="false">Use "%s" in the middle of the word,</string>
+	<string name="letter_end" formatted="false"> Use "%s" in the end of the word,</string>
+	
 </resources>
