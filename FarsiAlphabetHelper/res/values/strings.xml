@@ -22,5 +22,5 @@
 	<string name="letter_middle" formatted="false">Use " %s " in the middle of the word, for example: " %s " (%s).</string>
 	<string name="letter_end" formatted="false"> Use " %s " in the end of the word, for example: " %s " (%s).</string>
 	<string name="standalone_end_letters">Letters cannot attach, ز , ر , د , ذ , و , ا, immeditely after. </string>
-	<string name="right_to_left">Practice your farsi writting from right to left.</string>
+	<string name="right_to_left">Practice your farsi writting, from right to left.</string>
 </resources>
