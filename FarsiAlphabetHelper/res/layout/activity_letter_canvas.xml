@@ -42,7 +42,21 @@
         android:layout_toLeftOf="@+id/buttonResetCanvas"
         android:ems="10"
         android:text="@string/about_letter"
-        android:textColor="#cc0063"
-        android:textSize="26dp" />
+        android:textColor="#01C5BB"
+        android:textSize="28dp" />
+
+    <TextView
+        android:id="@+id/standaloneInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/letterCanvas"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/letterCanvas"
+        android:layout_marginBottom="10dp"
+        android:ems="10"
+        android:text="@string/standalone_end_letters"
+        android:textColor="#01C5BB"
+        android:textSize="24dp"
+        android:textStyle="italic" />
 
 </RelativeLayout>

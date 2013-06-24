@@ -25,6 +25,7 @@ public class LetterCanvasActivity extends Activity {
 
 	private CanvasTextView canvas;
 	private TextView infoText;
+	private TextView infoStandalone;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,7 @@ public class LetterCanvasActivity extends Activity {
 		setupActionBar();
 
 		infoText = (TextView) findViewById(R.id.letterInfo);
+		infoStandalone = (TextView)findViewById(R.id.standaloneInfo);
 
 		canvas = (CanvasTextView) findViewById(R.id.letterCanvas);
 		Intent intent = getIntent();
@@ -62,16 +64,23 @@ public class LetterCanvasActivity extends Activity {
 		if (position.equals("begin")) {
 			infoText.setText(String.format(LetterCanvasActivity.this
 					.getResources().getString(R.string.letter_begin), letter, farsiExa, englishExa));
+			infoStandalone.setText(String.format(LetterCanvasActivity.this
+					.getResources().getString(R.string.right_to_left)));
 		}
 
 		else if (position.equals("middle")) {
 			infoText.setText(String.format(LetterCanvasActivity.this
 					.getResources().getString(R.string.letter_middle), letter, farsiExa, englishExa));
+			infoStandalone.setText(String.format(LetterCanvasActivity.this
+					.getResources().getString(R.string.right_to_left)));
 		}
+	
 
 		else if (position.equals("end")) {
 			infoText.setText(String.format(LetterCanvasActivity.this
 					.getResources().getString(R.string.letter_end), letter, farsiExa, englishExa));
+			infoStandalone.setText(String.format(LetterCanvasActivity.this
+					.getResources().getString(R.string.standalone_end_letters)));
 		}
 
 	}
