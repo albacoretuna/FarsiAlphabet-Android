@@ -15,7 +15,7 @@ public class WordItem {
 	public static List<WordItem> createFarsiRelatedWords() {
 		List<WordItem> exampleWords = new ArrayList<WordItem>();
 		exampleWords.add(new WordItem("آب", "باد", "ما", "Water", "Wind", "Us"));
-		exampleWords.add(new WordItem("باد", "سبد", "سیب", "Wind", "basket", "Apple"));
+		exampleWords.add(new WordItem("باد", "سبد", "سیب", "Wind", "Basket", "Apple"));
 		exampleWords.add(new WordItem("پا", "سپید", "توپ", "Leg", "White", "Ball"));
 		exampleWords.add(new WordItem("توپ", "دستور", "دست", "Ball", "Command", "Hand"));
 		exampleWords.add(new WordItem("ثریا", "میثم", "مثلث", "Soraya", "Meisam", "Triangle"));
@@ -23,7 +23,7 @@ public class WordItem {
 		exampleWords.add(new WordItem("چب", "هیچکس", "مچ", "Left", "Nobody", "Wrist"));
 		exampleWords.add(new WordItem("حس", "محبوب", "فرح", "Feeling", "Popular", "Farah"));
 		exampleWords.add(new WordItem("خط", "بخت", "ملخ", "Script", "Fortune", "Grasshopper"));
-		exampleWords.add(new WordItem("دستور", "ادب", "سبد", "Command", "Curtsey", "basket"));
+		exampleWords.add(new WordItem("دستور", "ادب", "سبد", "Command", "Curtsey", "Basket"));
 		exampleWords.add(new WordItem("ذات", "بذر", "اتخاذ ", "Nature", "Seed", "Take"));
 		exampleWords.add(new WordItem("راز", "برگ", "بهار", "Secret", "Leave", "Spring"));
 		exampleWords.add(new WordItem("زشت", "بز", "راز", "Ugly", "Goat", "Secret"));
@@ -31,10 +31,10 @@ public class WordItem {
 		exampleWords.add(new WordItem("سطل", "اسم", "خیس", "Bucket", "Name", "Wet"));
 		exampleWords.add(new WordItem("شب", "پشم", "آرش", "Night", "Wool", "Arash"));
 		exampleWords.add(new WordItem("صنم", "اصل", "عاص", "Sanam", "Original", "Disobedient"));
-		exampleWords.add(new WordItem("ضبط", "مضطرب", "قبض", "Record", "worried", "receipt"));
+		exampleWords.add(new WordItem("ضبط", "مضطرب", "قبض", "Record", "Worried", "Receipt"));
 		exampleWords.add(new WordItem("طلا", "سطل", "خط", "Gold", "Bucket", "Script"));
 		exampleWords.add(new WordItem("ظلم", "مظلوم", "واعظ", "cruelty", "Oppressed", "Preacher"));
-		exampleWords.add(new WordItem("علی", "معلم", "طلوع", "Ali", "Teacher", "Rise"));
+		exampleWords.add(new WordItem("علم", "معلم", "ولع", "Science", "Teacher", "Voracity"));
 		exampleWords.add(new WordItem("غنچه", "بغل", "باغ", "Gemma", "Hug", "Garden"));
 		exampleWords.add(new WordItem("فکر", "گفت", "کیف", "Thought", "Said", "Bag"));
 		exampleWords.add(new WordItem("قفل", "چاقو", "قایق", "Lock", "Knife", "Kayak"));
