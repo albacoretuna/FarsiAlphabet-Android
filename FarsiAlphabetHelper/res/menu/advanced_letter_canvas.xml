@@ -1,0 +1,41 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+     <item
+        android:id="@+id/action_previous"
+        android:icon="@drawable/ic_action_previous"
+        android:showAsAction="ifRoom"
+        android:title="@string/action_previous"/>
+     
+    <item
+        android:id="@+id/action_clear"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_action_refresh"
+        android:showAsAction="ifRoom"
+        android:title="@string/action_clear"/>
+    <item
+        android:id="@+id/action_next"
+        android:icon="@drawable/ic_next"
+        android:showAsAction="ifRoom"
+        android:title="@string/action_next"/>
+    
+     <item
+        android:id="@+id/action_info"
+        android:icon="@drawable/ic_action_info"
+        android:showAsAction="ifRoom"
+        android:title="@string/action_info"/>
+     
+    <item
+        android:id="@+id/action_Listen"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_action_listen"
+        android:showAsAction="ifRoom"
+        android:title="@string/action_listen"/>
+    
+    <item
+        android:id="@+id/action_write"
+        android:icon="@drawable/ic_action_write"
+        android:showAsAction="ifRoom"
+        android:title="@string/action_write"/>
+    
+
+</menu>
