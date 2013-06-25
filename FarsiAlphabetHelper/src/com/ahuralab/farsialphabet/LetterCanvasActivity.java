@@ -2,10 +2,15 @@ package com.ahuralab.farsialphabet;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -35,7 +40,7 @@ public class LetterCanvasActivity extends Activity {
 		setupActionBar();
 
 		infoText = (TextView) findViewById(R.id.letterInfo);
-		infoStandalone = (TextView)findViewById(R.id.standaloneInfo);
+		infoStandalone = (TextView) findViewById(R.id.standaloneInfo);
 
 		canvas = (CanvasTextView) findViewById(R.id.letterCanvas);
 		Intent intent = getIntent();
@@ -43,7 +48,8 @@ public class LetterCanvasActivity extends Activity {
 		if (dataStrings != null) {
 			canvas.setText(dataStrings[0]);
 			setTitle("Practice drawing: " + dataStrings[0]);
-			setTextViewInfo(dataStrings[1], dataStrings[0], dataStrings[2], dataStrings[3]);
+			setTextViewInfo(dataStrings[1], dataStrings[0], dataStrings[2],
+					dataStrings[3]);
 		}
 
 		// Reset
@@ -59,29 +65,77 @@ public class LetterCanvasActivity extends Activity {
 				Toast.LENGTH_SHORT).show();
 	}
 
-	private void setTextViewInfo(String position, String letter, String farsiExa, String englishExa) {
+	private void setTextViewInfo(String position, String letter,
+			final String farsiExa, String englishExa) {
 
 		if (position.equals("begin")) {
 			infoText.setText(String.format(LetterCanvasActivity.this
-					.getResources().getString(R.string.letter_begin), letter, farsiExa, englishExa));
+					.getResources().getString(R.string.letter_begin), letter,
+					farsiExa, englishExa));
+			infoText.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					showDialogChangeCanvas(farsiExa);
+				}
+			});
 			infoStandalone.setText(String.format(LetterCanvasActivity.this
 					.getResources().getString(R.string.right_to_left)));
 		}
 
 		else if (position.equals("middle")) {
 			infoText.setText(String.format(LetterCanvasActivity.this
-					.getResources().getString(R.string.letter_middle), letter, farsiExa, englishExa));
+					.getResources().getString(R.string.letter_middle), letter,
+					farsiExa, englishExa));
 			infoStandalone.setText(String.format(LetterCanvasActivity.this
 					.getResources().getString(R.string.right_to_left)));
+			infoText.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					showDialogChangeCanvas(farsiExa);
+
+				}
+			});
 		}
-	
 
 		else if (position.equals("end")) {
 			infoText.setText(String.format(LetterCanvasActivity.this
-					.getResources().getString(R.string.letter_end), letter, farsiExa, englishExa));
-			infoStandalone.setText(String.format(LetterCanvasActivity.this
-					.getResources().getString(R.string.standalone_end_letters)));
+					.getResources().getString(R.string.letter_end), letter,
+					farsiExa, englishExa));
+			infoStandalone
+					.setText(String.format(LetterCanvasActivity.this
+							.getResources().getString(
+									R.string.standalone_end_letters)));
+			infoText.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					showDialogChangeCanvas(farsiExa);
+				}
+			});
 		}
+
+	}
+
+	protected void showDialogChangeCanvas(final String farsiExample) {
+
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle("")
+				.setMessage(
+						"Do you want to practice writting the example word?")
+				.setPositiveButton(R.string.yes,
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int id) {
+								canvas.setText(farsiExample);
+							}
+						})
+				.setNegativeButton(R.string.no_thanks,
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int id) {
+
+							}
+						});
+
+		// Create the AlertDialog object and show it
+		builder.show();
 
 	}
 
