@@ -3,8 +3,6 @@
  */
 package com.ahuralab.farsialphabet;
 
-import java.util.List;
-
 import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
@@ -21,26 +19,18 @@ import android.widget.TextView;
  */
 public class LetterListAdapter extends BaseAdapter {
 
-	public static final String LETTER_MIDDLE = "middle";
-	public static final String LETTER_BEGIN = "begin";
-	public static final String LETTER_END = "end";
-
 	private final Context context;
-
-	private final List<LetterItem> items;
-	private final List<WordItem> exampleItems;
+	private final LetterItem[] items;
 
 	public LetterListAdapter(Context context) {
 		this.context = context;
-		items = LetterItem.createFarsi();
-		exampleItems = WordItem.createFarsiRelatedWords();
+		items = LetterItem.FARSI;
 	}
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		final LetterItem item = (LetterItem) getItem(position);
-		final WordItem wordItem = (WordItem) exampleItems.get(position);
-
+		
 		View letterView = null;
 		if (convertView == null) {
 			LayoutInflater li = LayoutInflater.from(context);
@@ -63,37 +53,28 @@ public class LetterListAdapter extends BaseAdapter {
 		TextView beginView = ((TextView) letterView
 				.findViewById(R.id.letterBegin));
 		beginView.setText(item.begin);
-		String[] infoLetterBegin = { beginView.getText().toString(),
-				LETTER_BEGIN, wordItem.beginFarsi, wordItem.beginEnglish };
-		beginView.setOnClickListener(new DrawingOnClickListener(context,
-				infoLetterBegin));
+		beginView.setOnClickListener(new DrawingOnClickListener(context, item, LetterPracticeActivity.BEGIN));
 
 		TextView middleView = ((TextView) letterView
 				.findViewById(R.id.letterMiddle));
 		middleView.setText(item.middle);
-		String[] infoLetterMiddle = { middleView.getText().toString(),
-				LETTER_MIDDLE, wordItem.middleFarsi, wordItem.middleEnglis };
-		middleView.setOnClickListener(new DrawingOnClickListener(context,
-				infoLetterMiddle));
+		middleView.setOnClickListener(new DrawingOnClickListener(context, item, LetterPracticeActivity.MIDDLE));
 
 		TextView endView = ((TextView) letterView.findViewById(R.id.letterEnd));
 		endView.setText(item.end);
-		String[] infoLetterEnd = { endView.getText().toString(), LETTER_END,
-				wordItem.endFarsi, wordItem.endEnglish };
-		endView.setOnClickListener(new DrawingOnClickListener(context,
-				infoLetterEnd));
+		endView.setOnClickListener(new DrawingOnClickListener(context, item, LetterPracticeActivity.END));
 
 		return letterView;
 	}
 
 	@Override
 	public int getCount() {
-		return items.size();
+		return items.length;
 	}
 
 	@Override
 	public Object getItem(int position) {
-		return items.get(position);
+		return items[position];
 	}
 
 	@Override
@@ -124,13 +105,11 @@ public class LetterListAdapter extends BaseAdapter {
 				final MediaPlayer mp = MediaPlayer.create(context,
 						letter.soundId);
 				mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-
 					@Override
 					public void onCompletion(MediaPlayer mp) {
 						mp.release();
 						playing = false;
 					}
-
 				});
 				mp.start();
 			}
@@ -141,18 +120,20 @@ public class LetterListAdapter extends BaseAdapter {
 	private static class DrawingOnClickListener implements View.OnClickListener {
 
 		private final Context context;
-		private final String[] infoLetter;
+		private final LetterItem letterItem;
+		private final int startIndex;
 
-		public DrawingOnClickListener(Context context, String[] infoLetter) {
+		public DrawingOnClickListener(Context context, LetterItem letterItem, int startIndex) {
 			this.context = context;
-			this.infoLetter = infoLetter;
+			this.letterItem = letterItem;
+			this.startIndex = startIndex;
 		}
 
 		@Override
 		public void onClick(View v) {
-			Intent intent = new Intent(context, LetterCanvasActivity.class);
-			intent.putExtra(LetterCanvasActivity.LETTER_INTENT_EXTRA,
-					infoLetter);
+			Intent intent = new Intent(context, LetterPracticeActivity.class);
+			intent.putExtra(LetterPracticeActivity.LETTER_INTENT_EXTRA, letterItem);
+			intent.putExtra(LetterPracticeActivity.INDEX_INTENT_EXTRA, startIndex);
 			context.startActivity(intent);
 		}
 

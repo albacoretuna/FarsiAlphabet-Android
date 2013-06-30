@@ -29,6 +29,9 @@ public class CanvasTextView extends TextView {
 	private Paint paint;
 	private Path currentPath;
 	
+	Path middleLine;
+	Paint whitePaint;
+
 	public CanvasTextView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 		initialize(context);
@@ -52,8 +55,15 @@ public class CanvasTextView extends TextView {
 		paint.setStrokeJoin(Paint.Join.MITER);
 		paint.setStrokeCap(Paint.Cap.ROUND);
 		paint.setStrokeWidth(30);
+		
+		// middle line
+		middleLine = new Path();
+		middleLine.moveTo(0, getHeight() / 2);
+		middleLine.lineTo(getWidth(), getHeight() / 2);
+		whitePaint = new Paint();
+		whitePaint.setColor(Color.WHITE);
 	}
-	
+
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		if (event.getAction() == MotionEvent.ACTION_DOWN) {
@@ -79,6 +89,7 @@ public class CanvasTextView extends TextView {
 	@Override
 	public void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
+		canvas.drawPath(middleLine, whitePaint);
 		for (Path path : strokes) {
 			// canvas.drawPoint(graphic.x, graphic.y, paint);
 			canvas.drawPath(path, paint);
@@ -88,7 +99,7 @@ public class CanvasTextView extends TextView {
 			canvas.drawPath(currentPath, paint);
 		}
 	}
-	
+
 	public void resetCanvas() {
 		strokes = new ArrayList<Path>();
 		invalidate();

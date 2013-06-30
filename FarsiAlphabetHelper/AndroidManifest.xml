@@ -38,6 +38,22 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.ahuralab.farsialphabet.MainActivity" />
         </activity>
+        <activity
+            android:name="com.ahuralab.farsialphabet.WordCanvasActivity"
+            android:label="@string/title_activity_word_canvas"
+            android:parentActivityName="com.ahuralab.farsialphabet.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ahuralab.farsialphabet.LetterPracticeActivity" />
+        </activity>
+        <activity
+            android:name="com.ahuralab.farsialphabet.LetterPracticeActivity"
+            android:label="@string/title_activity_letter_practice"
+            android:parentActivityName="com.ahuralab.farsialphabet.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ahuralab.farsialphabet.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
