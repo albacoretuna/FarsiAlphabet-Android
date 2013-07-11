@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,7 +27,7 @@ public class WordCanvasActivity extends FragmentActivity implements
 	private static final String STATE_SELECTED_NAVIGATION_ITEM = "selected_navigation_item";
 	public static final String INTENT_LETTER_FILTER = "letter_filter";
 	
-	private List<WordItem> words = WordItem.createFarsiRelatedWords();
+	List<WordItem> items = null;
 	private DummySectionFragment fragment;
 
 	@Override
@@ -45,21 +44,21 @@ public class WordCanvasActivity extends FragmentActivity implements
 
 		// FIlter only words containing a selected letter
 		String filter = getIntent().getStringExtra(INTENT_LETTER_FILTER);
-		if (filter != null) {
-			filter = filter.replace("ـ", "");
-			for (int i = words.size() - 1; i >= 0; i--) {
-				if (!words.get(i).farsi.contains(filter)) {
-					words.remove(i);
-				}
-			}
-		}
 		
+		items = null;
+		if (filter != null) {
+			items = WordItem.EXAMPLE_WORDS.get(filter);
+		}
+		if (items == null) {
+			items = WordItem.EXAMPLE_WORDS.get("ﺍ");
+		}
+				
 		// Set up the dropdown list navigation in the action bar.
 		actionBar.setListNavigationCallbacks(
 		// Specify a SpinnerAdapter to populate the dropdown list.
 				new ArrayAdapter<WordItem>(getActionBarThemedContextCompat(),
 						android.R.layout.simple_list_item_1,
-						android.R.id.text1, words), this);
+						android.R.id.text1, items), this);
 	}
 
 	/**
@@ -126,7 +125,7 @@ public class WordCanvasActivity extends FragmentActivity implements
 		// container view.
 		fragment = new DummySectionFragment();
 		Bundle args = new Bundle();
-		args.putString(DummySectionFragment.ARG_FARSI_WORD, words.get(position).farsi);
+		args.putString(DummySectionFragment.ARG_FARSI_WORD, items.get(position).farsi);
 		fragment.setArguments(args);
 		getSupportFragmentManager().beginTransaction()
 				.replace(R.id.container, fragment).commit();

@@ -4,7 +4,9 @@
 package com.ahuralab.farsialphabet;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author michele.sama@gmail.com
@@ -12,197 +14,61 @@ import java.util.List;
  * 
  */
 public class WordItem {
-	public static List<WordItem> createFarsiRelatedWords() {
-		List<WordItem> exampleWords = new ArrayList<WordItem>();
-		// Begin
-		exampleWords
-				.add(new WordItem("آب", "Water"));
-		exampleWords.add(new WordItem("باد", "Wind"));
-		exampleWords.add(new WordItem("پا", "Leg"));
-		exampleWords.add(new WordItem("توپ", "Ball"));
-		exampleWords.add(new WordItem("ثریا","Soraya"));
-		exampleWords.add(new WordItem("جام", "Cup"));
-		exampleWords.add(new WordItem("چب", "Left"));
-		exampleWords.add(new WordItem("حس", "Feeling"));
-		exampleWords.add(new WordItem("خط", "Script"));
-		exampleWords.add(new WordItem("دستور", "Command"));
-		exampleWords.add(new WordItem("ذات",  "Nature"));
-		exampleWords.add(new WordItem("راز", "Secret"));
-		exampleWords.add(new WordItem("زشت", "Ugly"));
-		exampleWords.add(new WordItem("ژاله", "Jaleh"));
-		exampleWords.add(new WordItem("سطل", "Bucket"));
-		exampleWords.add(new WordItem("شب", "Night"));
-		exampleWords.add(new WordItem("صدا", "Sound"));
-		exampleWords.add(new WordItem("ضبط", "Record"));
-		exampleWords.add(new WordItem("طلا", "Gold"));
-		exampleWords.add(new WordItem("ظلم", "cruelty"));
-		exampleWords.add(new WordItem("علم", "Science"));
-		exampleWords.add(new WordItem("غنچه", "Gemma"));
-		exampleWords.add(new WordItem("فکر", "Thought"));
-		exampleWords.add(new WordItem("قفل", "Lock"));
-		exampleWords.add(new WordItem("کتاب", "Book"));
-		exampleWords.add(new WordItem("گفت", "Said"));
-		exampleWords.add(new WordItem("لیوان", "Glass"));
-		exampleWords.add(new WordItem("مچ", "Wrist"));
-		exampleWords.add(new WordItem("نان", "Bread"));
-		exampleWords.add(new WordItem("وان", "Bathtub"));
-		exampleWords.add(new WordItem("هلو","Peach"));
-		exampleWords.add(new WordItem("یلدا", "Yalda"));
-		
-		
-		// TODO keep only the second word
-		/*
-		exampleWords
-		.add(new WordItem("آب", "باد", "ما", "Water", "Wind", "Us"));
-exampleWords.add(new WordItem("باد", "سبد", "سیب", "Wind", "Basket",
-		"Apple"));
-exampleWords.add(new WordItem("پا", "سپید", "توپ", "Leg", "White",
-		"Ball"));
-exampleWords.add(new WordItem("توپ", "دستور", "دست", "Ball", "Command",
-		"Hand"));
-exampleWords.add(new WordItem("ثریا", "میثم", "مثلث", "Soraya",
-		"Meisam", "Triangle"));
-exampleWords.add(new WordItem("جام", "کجا", "کج", "Cup", "Where",
-		"Crank"));
-exampleWords.add(new WordItem("چب", "هیچکس", "مچ", "Left", "Nobody",
-		"Wrist"));
-exampleWords.add(new WordItem("حس", "محبوب", "صبح", "Feeling",
-		"Popular", "Morning"));
-exampleWords.add(new WordItem("خط", "بخت", "ملخ", "Script", "Fortune",
-		"Grasshopper"));
-exampleWords.add(new WordItem("دستور", "ادب", "سبد", "Command",
-		"Curtsey", "Basket"));
-exampleWords.add(new WordItem("ذات", "بذر", "اتخاذ ", "Nature", "Seed",
-		"Take"));
-exampleWords.add(new WordItem("راز", "برگ", "بهار", "Secret", "Leave",
-		"Spring"));
-exampleWords.add(new WordItem("زشت", "بزم", "ریز", "Ugly", "Banquet",
-		"Tiny"));
-exampleWords.add(new WordItem("ژاله", "پژمان", "شوفاژ", "Jaleh",
-		"Pejman", "Radiator"));
-exampleWords.add(new WordItem("سطل", "خاکستر", "خیس", "Bucket", "Ash",
-		"Wet"));
-exampleWords.add(new WordItem("شب", "پشم", "بیش", "Night", "Wool",
-		"More"));
-exampleWords.add(new WordItem("صدا", "شصت", "متخصص", "Sound", "Sixty",
-		"Specialist"));
-exampleWords.add(new WordItem("ضبط", "مضطرب", "قبض", "Record",
-		"Worried", "Receipt"));
-exampleWords.add(new WordItem("طلا", "سطل", "خط", "Gold", "Bucket",
-		"Script"));
-exampleWords.add(new WordItem("ظلم", "مظلوم", "واعظ", "cruelty",
-		"Oppressed", "Preacher"));
-exampleWords.add(new WordItem("علم", "معلم", "ولع", "Science",
-		"Teacher", "Voracity"));
-exampleWords.add(new WordItem("غنچه", "بغل", "باغ", "Gemma", "Hug",
-		"Garden"));
-exampleWords.add(new WordItem("فکر", "گفت", "کیف", "Thought", "Said",
-		"Bag"));
-exampleWords.add(new WordItem("قفل", "چاقو", "قایق", "Lock", "Knife",
-		"Kayak"));
-exampleWords.add(new WordItem("کتاب", "هیچکس", "لک لک", "Book",
-		"Nobody", "Stork"));
-exampleWords.add(new WordItem("گفت", "خوشگل", "برگ", "Said",
-		"Beautiful", "Leave"));
-exampleWords.add(new WordItem("لیوان", "ژاله", "گل", "Glass", "Zaleh",
-		"Flower"));
-exampleWords.add(new WordItem("مچ", "نماد", "سیم", "Wrist", "Symbol",
-		"Wire"));
-exampleWords.add(new WordItem("نان", "صنم", "میهن", "Bread", "Sanam",
-		"Homeland"));
-exampleWords.add(new WordItem("وان", "محبوب", "هلو", "Bath tub",
-		"Popular", "Peach"));
-exampleWords.add(new WordItem("هلو", "بهار", "به", "Peach", "Spring",
-		"Quince"));
-exampleWords.add(new WordItem("یلدا", "سیب", "بی بی", "Yalda", "Apple",
-		"Queen"));
-
-
-
-// TODO keep only the third word
-exampleWords
-.add(new WordItem("آب", "باد", "ما", "Water", "Wind", "Us"));
-exampleWords.add(new WordItem("باد", "سبد", "سیب", "Wind", "Basket",
-"Apple"));
-exampleWords.add(new WordItem("پا", "سپید", "توپ", "Leg", "White",
-"Ball"));
-exampleWords.add(new WordItem("توپ", "دستور", "دست", "Ball", "Command",
-"Hand"));
-exampleWords.add(new WordItem("ثریا", "میثم", "مثلث", "Soraya",
-"Meisam", "Triangle"));
-exampleWords.add(new WordItem("جام", "کجا", "کج", "Cup", "Where",
-"Crank"));
-exampleWords.add(new WordItem("چب", "هیچکس", "مچ", "Left", "Nobody",
-"Wrist"));
-exampleWords.add(new WordItem("حس", "محبوب", "صبح", "Feeling",
-"Popular", "Morning"));
-exampleWords.add(new WordItem("خط", "بخت", "ملخ", "Script", "Fortune",
-"Grasshopper"));
-exampleWords.add(new WordItem("دستور", "ادب", "سبد", "Command",
-"Curtsey", "Basket"));
-exampleWords.add(new WordItem("ذات", "بذر", "اتخاذ ", "Nature", "Seed",
-"Take"));
-exampleWords.add(new WordItem("راز", "برگ", "بهار", "Secret", "Leave",
-"Spring"));
-exampleWords.add(new WordItem("زشت", "بزم", "ریز", "Ugly", "Banquet",
-"Tiny"));
-exampleWords.add(new WordItem("ژاله", "پژمان", "شوفاژ", "Jaleh",
-"Pejman", "Radiator"));
-exampleWords.add(new WordItem("سطل", "خاکستر", "خیس", "Bucket", "Ash",
-"Wet"));
-exampleWords.add(new WordItem("شب", "پشم", "بیش", "Night", "Wool",
-"More"));
-exampleWords.add(new WordItem("صدا", "شصت", "متخصص", "Sound", "Sixty",
-"Specialist"));
-exampleWords.add(new WordItem("ضبط", "مضطرب", "قبض", "Record",
-"Worried", "Receipt"));
-exampleWords.add(new WordItem("طلا", "سطل", "خط", "Gold", "Bucket",
-"Script"));
-exampleWords.add(new WordItem("ظلم", "مظلوم", "واعظ", "cruelty",
-"Oppressed", "Preacher"));
-exampleWords.add(new WordItem("علم", "معلم", "ولع", "Science",
-"Teacher", "Voracity"));
-exampleWords.add(new WordItem("غنچه", "بغل", "باغ", "Gemma", "Hug",
-"Garden"));
-exampleWords.add(new WordItem("فکر", "گفت", "کیف", "Thought", "Said",
-"Bag"));
-exampleWords.add(new WordItem("قفل", "چاقو", "قایق", "Lock", "Knife",
-"Kayak"));
-exampleWords.add(new WordItem("کتاب", "هیچکس", "لک لک", "Book",
-"Nobody", "Stork"));
-exampleWords.add(new WordItem("گفت", "خوشگل", "برگ", "Said",
-"Beautiful", "Leave"));
-exampleWords.add(new WordItem("لیوان", "بله", "گل", "Glass", "Yes",
-"Flower"));
-exampleWords.add(new WordItem("مچ", "نماد", "سیم", "Wrist", "Symbol",
-"Wire"));
-exampleWords.add(new WordItem("نان", "صنم", "میهن", "Bread", "Sanam",
-"Homeland"));
-exampleWords.add(new WordItem("وان", "محبوب", "هلو", "Bath tub",
-"Popular", "Peach"));
-exampleWords.add(new WordItem("هلو", "بهار", "به", "Peach", "Spring",
-"Quince"));
-exampleWords.add(new WordItem("یلدا", "سیب", "بی بی", "Yalda", "Apple",
-"Queen"));
-*/
-		return exampleWords;
+	public final static Map<String, List<WordItem>> EXAMPLE_WORDS =  new HashMap<String, List<WordItem>>();
+	
+	static {
+		EXAMPLE_WORDS.put("ﺍ", createWords("آب", "باد", "ما", "Water", "Wind", "Us"));
+		EXAMPLE_WORDS.put("ب", createWords("باد", "سبد", "سیب", "Wind", "Basket", "Apple"));
+		EXAMPLE_WORDS.put("پ", createWords("پا", "سپید", "توپ", "Leg", "White", "Ball"));
+		EXAMPLE_WORDS.put("ﺕ", createWords("توپ", "دستور", "دست", "Ball", "Command", "Hand"));
+		EXAMPLE_WORDS.put("ﺙ", createWords("ثریا", "میثم", "مثلث", "Soraya", "Meisam", "Triangle"));
+		EXAMPLE_WORDS.put("ﺝ", createWords("جام", "کجا", "کج", "Cup", "Where", "Crank"));
+		EXAMPLE_WORDS.put("ﭺ", createWords("چب", "هیچکس", "مچ", "Left", "Nobody", "Wrist"));
+		EXAMPLE_WORDS.put("ﺡ", createWords("حس", "محبوب", "فرح", "Feeling", "Popular", "Farah"));
+		EXAMPLE_WORDS.put("ﺥ", createWords("خط", "بخت", "ملخ", "Script", "Fortune", "Grasshopper"));
+		EXAMPLE_WORDS.put("ﺩ", createWords("دستور", "ادب", "سبد", "Command", "Curtsey", "Basket"));
+		EXAMPLE_WORDS.put("ﺫ", createWords("ذات", "بذر", "اتخاذ ", "Nature", "Seed", "Take"));
+		EXAMPLE_WORDS.put("ﺭ", createWords("راز", "برگ", "بهار", "Secret", "Leave", "Spring"));
+		EXAMPLE_WORDS.put("ﺯ", createWords("زشت", "بز", "راز", "Ugly", "Goat", "Secret"));
+		EXAMPLE_WORDS.put("ژ", createWords("ژاله", "پژمان", "شوفاژ", "Jaleh", "Pejman", "Radiator"));
+		EXAMPLE_WORDS.put("ﺱ", createWords("سطل", "اسم", "خیس", "Bucket", "Name", "Wet"));
+		EXAMPLE_WORDS.put("ﺵ", createWords("شب", "پشم", "آرش", "Night", "Wool", "Arash"));
+		EXAMPLE_WORDS.put("ﺹ", createWords("صنم", "اصل", "عاص", "Sanam", "Original", "Disobedient"));
+		EXAMPLE_WORDS.put("ﺽ", createWords("ضبط", "مضطرب", "قبض", "Record", "Worried", "Receipt"));
+		EXAMPLE_WORDS.put("ﻁ", createWords("طلا", "سطل", "خط", "Gold", "Bucket", "Script"));
+		EXAMPLE_WORDS.put("ﻅ", createWords("ظلم", "مظلوم", "واعظ", "cruelty", "Oppressed", "Preacher"));
+		EXAMPLE_WORDS.put("ﻉ", createWords("علی", "معلم", "طلوع", "Ali", "Teacher", "Rise"));
+		EXAMPLE_WORDS.put("ﻍ", createWords("غنچه", "بغل", "باغ", "Gemma", "Hug", "Garden"));
+		EXAMPLE_WORDS.put("ﻑ", createWords("فکر", "گفت", "کیف", "Thought", "Said", "Bag"));
+		EXAMPLE_WORDS.put("ﻕ", createWords("قفل", "چاقو", "قایق", "Lock", "Knife", "Kayak"));
+		EXAMPLE_WORDS.put("ک", createWords("کتاب", "هیچکس", "بادبادک", "Book", "Nobody", "Kite"));
+		EXAMPLE_WORDS.put("گ", createWords("گفت", "خوشگل", "برگ", "Said", "Beautiful", "Leave"));
+		EXAMPLE_WORDS.put("ﻝ", createWords("لیوان", "ژاله", "گل", "Glass", "Zaleh", "Flower"));
+		EXAMPLE_WORDS.put("ﻡ", createWords("مچ", "مادر", "جام", "Wrist", "Mother", "Cup"));
+		EXAMPLE_WORDS.put("ﻥ", createWords("نان", "صنم", "میهن", "Bread", "Sanam", "Homeland"));
+		EXAMPLE_WORDS.put("و", createWords("وان", "محبوب", "هلو", "Bath tub", "Popular", "Peach"));
+		EXAMPLE_WORDS.put("ﻩ", createWords("هلو", "بهار", "به", "Peach", "Spring", "Quince"));
+		EXAMPLE_WORDS.put("ﻯ", createWords("یلدا", "سیب", "بی بی", "Yalda", "Apple", "Queen"));
 	}
 
-	// TODO add spelling in latin "baab"
+	private static List<WordItem> createWords(String beginFarsi, String middleFarsi, String endFarsi,
+			String beginEnglish, String middleEnglish, String endEnglish) {
+		List<WordItem> words = new ArrayList<WordItem>();
+		words.add(new WordItem(beginFarsi, beginEnglish));
+		words.add(new WordItem(middleFarsi, middleEnglish));
+		words.add(new WordItem(endFarsi, endEnglish));
+		return words;
+	}
+	
 	public final String farsi;
 	public final String english;
 
 	public WordItem(String farsi, String english) {
-		super();
-
 		this.farsi = farsi;
 		this.english = english;
 	}
-	
-	@Override
-	public String toString() {
-		return farsi + " (" + english + ")";
-	}
-	
 
+	public String toString() {
+		return farsi + " - " + english;
+	}
 }

@@ -25,9 +25,10 @@ public class LetterPracticeActivity extends FragmentActivity implements
 	 */
 	private static final String STATE_SELECTED_NAVIGATION_ITEM = "selected_navigation_item";
 	
-	public static final int BEGIN = 0;
-	public static final int MIDDLE = 1;
-	public static final int END = 2;
+	public static final int ISOLATED = 0;
+	public static final int BEGIN = 1;
+	public static final int MIDDLE = 2;
+	public static final int END = 3;
 	
 	public static final String LETTER_INTENT_EXTRA = "LetterItem";
 	public static final String INDEX_INTENT_EXTRA = "startingIndex";
@@ -58,6 +59,7 @@ public class LetterPracticeActivity extends FragmentActivity implements
 				new ArrayAdapter<String>(getActionBarThemedContextCompat(),
 						android.R.layout.simple_list_item_1,
 						android.R.id.text1, new String[] {
+								letterItem.isolated + " (" + letterItem.name + " - " + getResources().getString(R.string.isolated)+ ")",
 								letterItem.begin + " (" + letterItem.name + " - " + getResources().getString(R.string.begin)+ ")",
 								letterItem.middle + " (" + letterItem.name + " - " + getResources().getString(R.string.middle)+ ")",
 								letterItem.end + " (" + letterItem.name + " - " + getResources().getString(R.string.end)+ ")", }), this);
@@ -127,7 +129,7 @@ public class LetterPracticeActivity extends FragmentActivity implements
 			case R.id.action_write: {
 				Intent intent = new Intent(this.getApplicationContext(),
 						WordCanvasActivity.class);
-				intent.putExtra(WordCanvasActivity.INTENT_LETTER_FILTER, fragment.canvas.getText());
+				intent.putExtra(WordCanvasActivity.INTENT_LETTER_FILTER, letterItem.isolated);
 				startActivity(intent);
 				return true;
 			}
@@ -143,6 +145,10 @@ public class LetterPracticeActivity extends FragmentActivity implements
 		Bundle args = new Bundle();
 		String letter = "";
 		switch (position) {
+			case ISOLATED: {
+				letter = letterItem.isolated;
+				break;
+			}
 			case BEGIN: {
 				letter = letterItem.begin;
 				break;
