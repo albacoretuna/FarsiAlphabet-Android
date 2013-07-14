@@ -6,7 +6,7 @@ Users can listen to the correct pronunciation of each letter and can alos practi
 by drawing them on the screen.
 
 Check our app @ <a href="https://play.google.com/store/apps/details?id=com.ahuralab.farsialphabet#?t=W251bGwsMSwyLDIxMiwiY2"
-target="_blank">google play</a>.
+target="_blank">Google play</a>.
 
 
 
