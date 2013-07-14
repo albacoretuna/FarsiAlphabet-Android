@@ -5,6 +5,10 @@ FarsiAlphabet is an open source android application implemented to help people t
 Users can listen to the correct pronunciation of each letter and can alos practi to write them
 by drawing them on the screen.
 
+Check our app @ <a href="https://play.google.com/store/apps/details?id=com.ahuralab.farsialphabet#?t=W251bGwsMSwyLDIxMiwiY2"
+target="_blank">google play</a>.
+
+
 
 ## Credits and license
 
