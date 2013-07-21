@@ -54,6 +54,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.ahuralab.farsialphabet.MainActivity" />
         </activity>
+        <activity
+            android:name="com.ahuralab.farsialphabet.NumberPracticeActivity"
+            android:label="@string/title_activity_number_practice"
+            android:parentActivityName="com.ahuralab.farsialphabet.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ahuralab.farsialphabet.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

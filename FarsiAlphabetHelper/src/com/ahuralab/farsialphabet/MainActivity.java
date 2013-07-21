@@ -100,6 +100,12 @@ public class MainActivity extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle item selection
 		switch (item.getItemId()) {
+		case R.id.action_numbers: {
+			Intent intent = new Intent(this.getApplicationContext(),
+					NumberPracticeActivity.class);
+			startActivity(intent);
+			return true;
+		}
 		case R.id.action_about: {
 			Intent intent = new Intent(this.getApplicationContext(),
 					AboutActivity.class);

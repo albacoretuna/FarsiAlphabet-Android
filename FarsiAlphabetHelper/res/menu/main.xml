@@ -1,6 +1,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
     
     <item
+        android:id="@+id/action_numbers"
+        android:icon="@drawable/ic_action_numbers"
+        android:showAsAction="ifRoom"
+        android:title="@string/action_numbers"/>
+    
+    <item
         android:id="@+id/action_about"
         android:icon="@drawable/ic_action_about"
         android:showAsAction="ifRoom"
