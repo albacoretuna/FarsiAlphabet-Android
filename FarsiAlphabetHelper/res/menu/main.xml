@@ -3,12 +3,12 @@
     <item
         android:id="@+id/action_numbers"
         android:icon="@drawable/ic_action_numbers"
-        android:showAsAction="ifRoom"
-        android:title="@string/action_numbers"/>
+        android:showAsAction="ifRoom|withText"
+        android:title="@string/numbers"/>
     
     <item
         android:id="@+id/action_about"
-        android:icon="@drawable/ic_action_about"
+        android:icon="@drawable/ic_more_info"
         android:showAsAction="ifRoom"
         android:title="@string/action_about"/>
 

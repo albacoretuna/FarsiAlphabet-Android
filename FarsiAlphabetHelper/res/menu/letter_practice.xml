@@ -3,8 +3,8 @@
      <item
         android:id="@+id/action_write"
         android:icon="@drawable/ic_action_write"
-        android:showAsAction="ifRoom"
-        android:title="@string/action_write"/>
+        android:showAsAction="ifRoom|withText"
+        android:title="@string/words"/>
      
      <item
         android:id="@+id/action_refresh"

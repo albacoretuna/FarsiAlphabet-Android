@@ -24,5 +24,10 @@
     <string name="middle">middle</string>
     <string name="end">end</string>
     <string name="title_activity_number_practice">Practive with numbers</string>
+    <string name="words">Words</string>
+    <string name="numbers">Numbers</string>
+    <string name="attention">Attentions</string>
+    <string name="numbers_help">Numbers in Farsi , unlike the letters, are all written from left to write.</string>
+    <string name="words_help">Letters and words in Farsi should be all written from write to left.</string>
 
 </resources>
