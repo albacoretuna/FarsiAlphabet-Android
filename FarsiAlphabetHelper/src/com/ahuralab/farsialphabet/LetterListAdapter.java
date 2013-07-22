@@ -30,7 +30,7 @@ public class LetterListAdapter extends BaseAdapter {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		final LetterItem item = (LetterItem) getItem(position);
-		
+
 		View letterView = null;
 		if (convertView == null) {
 			LayoutInflater li = LayoutInflater.from(context);
@@ -53,16 +53,19 @@ public class LetterListAdapter extends BaseAdapter {
 		TextView beginView = ((TextView) letterView
 				.findViewById(R.id.letterBegin));
 		beginView.setText(item.begin);
-		beginView.setOnClickListener(new DrawingOnClickListener(context, item, LetterPracticeActivity.BEGIN));
+		beginView.setOnClickListener(new DrawingOnClickListener(context, item,
+				LetterPracticeActivity.BEGIN));
 
 		TextView middleView = ((TextView) letterView
 				.findViewById(R.id.letterMiddle));
 		middleView.setText(item.middle);
-		middleView.setOnClickListener(new DrawingOnClickListener(context, item, LetterPracticeActivity.MIDDLE));
+		middleView.setOnClickListener(new DrawingOnClickListener(context, item,
+				LetterPracticeActivity.MIDDLE));
 
 		TextView endView = ((TextView) letterView.findViewById(R.id.letterEnd));
 		endView.setText(item.end);
-		endView.setOnClickListener(new DrawingOnClickListener(context, item, LetterPracticeActivity.END));
+		endView.setOnClickListener(new DrawingOnClickListener(context, item,
+				LetterPracticeActivity.END));
 
 		return letterView;
 	}
@@ -123,7 +126,8 @@ public class LetterListAdapter extends BaseAdapter {
 		private final LetterItem letterItem;
 		private final int startIndex;
 
-		public DrawingOnClickListener(Context context, LetterItem letterItem, int startIndex) {
+		public DrawingOnClickListener(Context context, LetterItem letterItem,
+				int startIndex) {
 			this.context = context;
 			this.letterItem = letterItem;
 			this.startIndex = startIndex;
@@ -132,8 +136,10 @@ public class LetterListAdapter extends BaseAdapter {
 		@Override
 		public void onClick(View v) {
 			Intent intent = new Intent(context, LetterPracticeActivity.class);
-			intent.putExtra(LetterPracticeActivity.LETTER_INTENT_EXTRA, letterItem);
-			intent.putExtra(LetterPracticeActivity.INDEX_INTENT_EXTRA, startIndex);
+			intent.putExtra(LetterPracticeActivity.LETTER_INTENT_EXTRA,
+					letterItem);
+			intent.putExtra(LetterPracticeActivity.INDEX_INTENT_EXTRA,
+					startIndex);
 			context.startActivity(intent);
 		}
 

@@ -28,7 +28,7 @@ public class CanvasTextView extends TextView {
 	private List<Path> strokes = new ArrayList<Path>();
 	private Paint paint;
 	private Path currentPath;
-	
+
 	Path middleLine;
 	Paint whitePaint;
 
@@ -55,7 +55,7 @@ public class CanvasTextView extends TextView {
 		paint.setStrokeJoin(Paint.Join.MITER);
 		paint.setStrokeCap(Paint.Cap.ROUND);
 		paint.setStrokeWidth(30);
-		
+
 		// middle line
 		middleLine = new Path();
 		middleLine.moveTo(0, getHeight() / 2);

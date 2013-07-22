@@ -24,15 +24,15 @@ public class LetterPracticeActivity extends FragmentActivity implements
 	 * current dropdown position.
 	 */
 	private static final String STATE_SELECTED_NAVIGATION_ITEM = "selected_navigation_item";
-	
+
 	public static final int ISOLATED = 0;
 	public static final int BEGIN = 1;
 	public static final int MIDDLE = 2;
 	public static final int END = 3;
-	
+
 	public static final String LETTER_INTENT_EXTRA = "LetterItem";
 	public static final String INDEX_INTENT_EXTRA = "startingIndex";
-	
+
 	private LetterItem letterItem;
 	private DummySectionFragment fragment;
 
@@ -40,12 +40,13 @@ public class LetterPracticeActivity extends FragmentActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_letter_practice);
-		
-		letterItem = (LetterItem) getIntent().getSerializableExtra(LETTER_INTENT_EXTRA);
-		setTitle(getResources().getString(R.string.title_activity_letter_practice) +
-				letterItem.isolated + " (" + letterItem.name + ")");
 
-		
+		letterItem = (LetterItem) getIntent().getSerializableExtra(
+				LETTER_INTENT_EXTRA);
+		setTitle(getResources().getString(
+				R.string.title_activity_letter_practice)
+				+ letterItem.isolated + " (" + letterItem.name + ")");
+
 		// Set up the action bar to show a dropdown list.
 		final ActionBar actionBar = getActionBar();
 		actionBar.setDisplayShowTitleEnabled(false);
@@ -54,20 +55,46 @@ public class LetterPracticeActivity extends FragmentActivity implements
 		actionBar.setDisplayHomeAsUpEnabled(true);
 
 		// Set up the dropdown list navigation in the action bar.
-		actionBar.setListNavigationCallbacks(
-		// Specify a SpinnerAdapter to populate the dropdown list.
-				new ArrayAdapter<String>(getActionBarThemedContextCompat(),
-						android.R.layout.simple_list_item_1,
-						android.R.id.text1, new String[] {
-								letterItem.isolated + " (" + letterItem.name + " - " + getResources().getString(R.string.isolated)+ ")",
-								letterItem.begin + " (" + letterItem.name + " - " + getResources().getString(R.string.begin)+ ")",
-								letterItem.middle + " (" + letterItem.name + " - " + getResources().getString(R.string.middle)+ ")",
-								letterItem.end + " (" + letterItem.name + " - " + getResources().getString(R.string.end)+ ")", }), this);
+		actionBar
+				.setListNavigationCallbacks(
+						// Specify a SpinnerAdapter to populate the dropdown
+						// list.
+						new ArrayAdapter<String>(
+								getActionBarThemedContextCompat(),
+								android.R.layout.simple_list_item_1,
+								android.R.id.text1, new String[] {
+										letterItem.isolated
+												+ " ("
+												+ letterItem.name
+												+ " - "
+												+ getResources().getString(
+														R.string.isolated)
+												+ ")",
+										letterItem.begin
+												+ " ("
+												+ letterItem.name
+												+ " - "
+												+ getResources().getString(
+														R.string.begin) + ")",
+										letterItem.middle
+												+ " ("
+												+ letterItem.name
+												+ " - "
+												+ getResources().getString(
+														R.string.middle) + ")",
+										letterItem.end
+												+ " ("
+												+ letterItem.name
+												+ " - "
+												+ getResources().getString(
+														R.string.end) + ")", }),
+						this);
 		int startingIndex = getIntent().getIntExtra(INDEX_INTENT_EXTRA, BEGIN);
 		if (savedInstanceState == null) {
 			savedInstanceState = new Bundle();
 		}
-		savedInstanceState.putInt(STATE_SELECTED_NAVIGATION_ITEM, startingIndex);
+		savedInstanceState
+				.putInt(STATE_SELECTED_NAVIGATION_ITEM, startingIndex);
 		onRestoreInstanceState(savedInstanceState);
 	}
 
@@ -111,28 +138,29 @@ public class LetterPracticeActivity extends FragmentActivity implements
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-			case android.R.id.home: {
-				// This ID represents the Home or Up button. In the case of this
-				// activity, the Up button is shown. Use NavUtils to allow users
-				// to navigate up one level in the application structure. For
-				// more details, see the Navigation pattern on Android Design:
-				//
-				// http://developer.android.com/design/patterns/navigation.html#up-vs-back
-				//
-				NavUtils.navigateUpFromSameTask(this);
-				return true;
-			}
-			case R.id.action_refresh: {
-				fragment.canvas.resetCanvas();
-				return true;
-			}
-			case R.id.action_write: {
-				Intent intent = new Intent(this.getApplicationContext(),
-						WordCanvasActivity.class);
-				intent.putExtra(WordCanvasActivity.INTENT_LETTER_FILTER, letterItem.isolated);
-				startActivity(intent);
-				return true;
-			}
+		case android.R.id.home: {
+			// This ID represents the Home or Up button. In the case of this
+			// activity, the Up button is shown. Use NavUtils to allow users
+			// to navigate up one level in the application structure. For
+			// more details, see the Navigation pattern on Android Design:
+			//
+			// http://developer.android.com/design/patterns/navigation.html#up-vs-back
+			//
+			NavUtils.navigateUpFromSameTask(this);
+			return true;
+		}
+		case R.id.action_refresh: {
+			fragment.canvas.resetCanvas();
+			return true;
+		}
+		case R.id.action_write: {
+			Intent intent = new Intent(this.getApplicationContext(),
+					WordCanvasActivity.class);
+			intent.putExtra(WordCanvasActivity.INTENT_LETTER_FILTER,
+					letterItem.isolated);
+			startActivity(intent);
+			return true;
+		}
 		}
 		return super.onOptionsItemSelected(item);
 	}
@@ -145,22 +173,22 @@ public class LetterPracticeActivity extends FragmentActivity implements
 		Bundle args = new Bundle();
 		String letter = "";
 		switch (position) {
-			case ISOLATED: {
-				letter = letterItem.isolated;
-				break;
-			}
-			case BEGIN: {
-				letter = letterItem.begin;
-				break;
-			}
-			case MIDDLE: {
-				letter = letterItem.middle;
-				break;
-			}
-			case END: {
-				letter = letterItem.end;
-				break;
-			}
+		case ISOLATED: {
+			letter = letterItem.isolated;
+			break;
+		}
+		case BEGIN: {
+			letter = letterItem.begin;
+			break;
+		}
+		case MIDDLE: {
+			letter = letterItem.middle;
+			break;
+		}
+		case END: {
+			letter = letterItem.end;
+			break;
+		}
 		}
 		args.putString(DummySectionFragment.ARG_LETTER, letter);
 		fragment.setArguments(args);
@@ -177,7 +205,7 @@ public class LetterPracticeActivity extends FragmentActivity implements
 
 		public static final String ARG_LETTER = "letter";
 		CanvasTextView canvas;
-		
+
 		public DummySectionFragment() {
 		}
 
@@ -188,8 +216,7 @@ public class LetterPracticeActivity extends FragmentActivity implements
 					R.layout.fragment_letter_practice_dummy, container, false);
 			canvas = (CanvasTextView) rootView
 					.findViewById(R.id.letterPracticeCanvas);
-			canvas.setText(getArguments().getString(
-					ARG_LETTER));
+			canvas.setText(getArguments().getString(ARG_LETTER));
 			return rootView;
 		}
 	}

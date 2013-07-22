@@ -2,20 +2,19 @@ package com.ahuralab.farsialphabet;
 
 import android.annotation.TargetApi;
 import android.app.ActionBar;
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.content.Context;
 import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.TextView;
 
 public class NumberPracticeActivity extends FragmentActivity implements
 		ActionBar.OnNavigationListener {
@@ -86,6 +85,13 @@ public class NumberPracticeActivity extends FragmentActivity implements
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
+		case R.id.action_question:
+
+			showDialog(
+					getString(R.string.numbers_help),
+					getString(R.string.attention));
+
+			break;
 		case android.R.id.home:
 			// This ID represents the Home or Up button. In the case of this
 			// activity, the Up button is shown. Use NavUtils to allow users
@@ -106,7 +112,8 @@ public class NumberPracticeActivity extends FragmentActivity implements
 		// container view.
 		Fragment fragment = new DummySectionFragment();
 		Bundle args = new Bundle();
-		args.putString(DummySectionFragment.ARG_LETTER, NumberItem.NUMBERS[position].getValue());
+		args.putString(DummySectionFragment.ARG_LETTER,
+				NumberItem.NUMBERS[position].getValue());
 		fragment.setArguments(args);
 		getSupportFragmentManager().beginTransaction()
 				.replace(R.id.container, fragment).commit();
@@ -120,7 +127,7 @@ public class NumberPracticeActivity extends FragmentActivity implements
 	public static class DummySectionFragment extends Fragment {
 		public static final String ARG_LETTER = "letter";
 		CanvasTextView canvas;
-		
+
 		public DummySectionFragment() {
 		}
 
@@ -131,10 +138,17 @@ public class NumberPracticeActivity extends FragmentActivity implements
 					R.layout.fragment_number_practice_dummy, container, false);
 			canvas = (CanvasTextView) rootView
 					.findViewById(R.id.numberPracticeCanvas);
-			canvas.setText(getArguments().getString(
-					ARG_LETTER));
+			canvas.setText(getArguments().getString(ARG_LETTER));
 			return rootView;
 		}
+	}
+
+	protected void showDialog(String message, String title) {
+
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle(title).setMessage(message);
+		// Create the AlertDialog object and show it
+		builder.show();
 	}
 
 }
