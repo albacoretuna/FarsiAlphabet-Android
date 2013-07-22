@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
-import android.widget.Toast;
 
 /**
  * @author michele.sama@gmail.com
@@ -29,10 +28,34 @@ public class MainActivity extends Activity {
 
 		// Increment app opened counter
 		showRateUsDialogIfNecessary();
+		
+		String[] tooltips = getResources().getStringArray(R.array.tooltips);
+		createDialog((int)Math.floor(Math.random() * tooltips.length), tooltips);
+	}
+	
+	private void createDialog(final int position, final String[] tooltips) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle(R.string.tooltips_title);
+		builder.setIcon(R.drawable.ic_stat_tooltips);
+		builder.setMessage(tooltips[position]);
+		// Add the buttons
+		builder.setNegativeButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+		           public void onClick(DialogInterface dialog, int id) {
+		               // User clicked OK button
+		        	   dialog.dismiss();
+		           }
+		       });
+		builder.setPositiveButton(R.string.next, new DialogInterface.OnClickListener() {
+		           public void onClick(DialogInterface dialog, int id) {
+		               // User cancelled the dialog
+		        	   dialog.dismiss();
+		        	   createDialog((position + 1) % tooltips.length, tooltips);
+		           }
+		       });
 
-		Toast.makeText(getApplicationContext(), R.string.welcome_toast_message,
-				Toast.LENGTH_SHORT).show();
-
+		// Create the AlertDialog
+		AlertDialog dialog = builder.create();
+		dialog.show();
 	}
 
 	private void showRateUsDialogIfNecessary() {

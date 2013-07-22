@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="tooltips">
+        <item >Farsi is written right to left. Dots are added at the end of the word.</item>
+        <item >Letters have a different shape depending on their position in the word.</item>
+        <item >Numbers are witten left to right. 1000 is ۱۰۰۰.</item>
+        <item >Certain letters, even in the middle of a word, do not connect with the next one.</item>
+        <item >Click on the red letters to hear their pronunciations. Click on the blue letters to practive drawing.</item>
+    </string-array>
+    
+</resources>
