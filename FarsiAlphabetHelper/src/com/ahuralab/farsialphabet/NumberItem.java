@@ -10,16 +10,16 @@ package com.ahuralab.farsialphabet;
 public class NumberItem {
 
 	public static final NumberItem[] NUMBERS = new NumberItem[] {
-		new NumberItem("Zero - 0", "0"),
-		new NumberItem("One - 1", "1"),
-		new NumberItem("Two - 2", "2"),
-		new NumberItem("Three - 3", "3"),
-		new NumberItem("Four - 4", "4"),
-		new NumberItem("Five - 5", "5"),
-		new NumberItem("Six - 6", "6"),
-		new NumberItem("Seven - 7", "7"),
-		new NumberItem("Eight - 8", "8"),
-		new NumberItem("Nine - 9", "9")
+		new NumberItem("صفر - 0", "۰"),
+		new NumberItem("یک -1", "۱"),
+		new NumberItem("دو -2", "۲"),
+		new NumberItem("سه -3", "۳"),
+		new NumberItem("چهار -4", "۴"),
+		new NumberItem("پنج -5", "۵"),
+		new NumberItem("شش - 6", "۶"),
+		new NumberItem("هفت - 7", "۷"),
+		new NumberItem("هشت - 8", "۸"),
+		new NumberItem("نه - 9", "۹")
 	};
 	
 	private final String name;
