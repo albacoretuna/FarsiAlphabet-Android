@@ -7,6 +7,13 @@
         android:icon="@drawable/ic_action_about"
         android:showAsAction="ifRoom"
         android:title="@string/action_about"/>
+          
+          <item
+        android:id="@+id/action_refresh"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_action_refresh"
+        android:showAsAction="ifRoom"
+        android:title="@string/action_refresh"/>
   
 
 </menu>

@@ -1,5 +1,6 @@
 package com.ahuralab.farsialphabet;
 
+
 import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.app.AlertDialog;
@@ -18,6 +19,8 @@ import android.widget.ArrayAdapter;
 
 public class NumberPracticeActivity extends FragmentActivity implements
 		ActionBar.OnNavigationListener {
+
+	private DummySectionFragment fragment;
 
 	/**
 	 * The serialization (saved instance state) Bundle key representing the
@@ -87,11 +90,10 @@ public class NumberPracticeActivity extends FragmentActivity implements
 		switch (item.getItemId()) {
 		case R.id.action_question:
 
-			showDialog(
-					getString(R.string.numbers_help),
+			showDialog(getString(R.string.numbers_help),
 					getString(R.string.attention));
 
-			break;
+			return true;
 		case android.R.id.home:
 			// This ID represents the Home or Up button. In the case of this
 			// activity, the Up button is shown. Use NavUtils to allow users
@@ -102,6 +104,11 @@ public class NumberPracticeActivity extends FragmentActivity implements
 			//
 			NavUtils.navigateUpFromSameTask(this);
 			return true;
+
+		case R.id.action_refresh: {
+			fragment.canvas.resetCanvas();
+			return true;
+		}
 		}
 		return super.onOptionsItemSelected(item);
 	}
@@ -110,7 +117,7 @@ public class NumberPracticeActivity extends FragmentActivity implements
 	public boolean onNavigationItemSelected(int position, long id) {
 		// When the given dropdown item is selected, show its contents in the
 		// container view.
-		Fragment fragment = new DummySectionFragment();
+		fragment = new DummySectionFragment();
 		Bundle args = new Bundle();
 		args.putString(DummySectionFragment.ARG_LETTER,
 				NumberItem.NUMBERS[position].getValue());
@@ -118,6 +125,14 @@ public class NumberPracticeActivity extends FragmentActivity implements
 		getSupportFragmentManager().beginTransaction()
 				.replace(R.id.container, fragment).commit();
 		return true;
+	}
+
+	protected void showDialog(String message, String title) {
+
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle(title).setMessage(message);
+		// Create the AlertDialog object and show it
+		builder.show();
 	}
 
 	/**
@@ -141,14 +156,6 @@ public class NumberPracticeActivity extends FragmentActivity implements
 			canvas.setText(getArguments().getString(ARG_LETTER));
 			return rootView;
 		}
-	}
-
-	protected void showDialog(String message, String title) {
-
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setTitle(title).setMessage(message);
-		// Create the AlertDialog object and show it
-		builder.show();
 	}
 
 }
