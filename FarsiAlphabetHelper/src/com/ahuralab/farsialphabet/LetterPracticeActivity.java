@@ -1,5 +1,9 @@
 package com.ahuralab.farsialphabet;
 
+import com.google.ads.AdRequest;
+import com.google.ads.AdSize;
+import com.google.ads.AdView;
+
 import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.content.Context;
@@ -15,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
 
 public class LetterPracticeActivity extends FragmentActivity implements
 		ActionBar.OnNavigationListener {
@@ -36,10 +41,26 @@ public class LetterPracticeActivity extends FragmentActivity implements
 	private LetterItem letterItem;
 	private DummySectionFragment fragment;
 
+	private AdView adView;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_letter_practice);
+
+		/*
+		 * // Create the adView adView = new AdView(this, AdSize.BANNER,
+		 * "ID");
+		 * 
+		 * // Lookup your LinearLayout assuming it's been given // the attribute
+		 * android:id="@+id/mainLayout" FrameLayout layout =
+		 * (FrameLayout)findViewById(R.id.container);
+		 * 
+		 * // Add the adView to it layout.addView(adView);
+		 * 
+		 * // Initiate a generic request to load it with an ad adView.loadAd(new
+		 * AdRequest());
+		 */
 
 		letterItem = (LetterItem) getIntent().getSerializableExtra(
 				LETTER_INTENT_EXTRA);
@@ -217,8 +238,20 @@ public class LetterPracticeActivity extends FragmentActivity implements
 			canvas = (CanvasTextView) rootView
 					.findViewById(R.id.letterPracticeCanvas);
 			canvas.setText(getArguments().getString(ARG_LETTER));
+
+			AdView adView = (AdView) rootView.findViewById(R.id.ad);
+			adView.loadAd(new AdRequest());
+
 			return rootView;
 		}
+	}
+
+	@Override
+	public void onDestroy() {
+		if (adView != null) {
+			adView.destroy();
+		}
+		super.onDestroy();
 	}
 
 }

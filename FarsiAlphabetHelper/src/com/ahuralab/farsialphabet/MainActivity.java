@@ -27,31 +27,34 @@ public class MainActivity extends Activity {
 		list.setAdapter(new LetterListAdapter(this));
 
 		// Increment app opened counter
-		showRateUsDialogIfNecessary();
-		
-		String[] tooltips = getResources().getStringArray(R.array.tooltips);
-		createDialog((int)Math.floor(Math.random() * tooltips.length), tooltips);
+		// showRateUsDialogIfNecessary();
+
+		//String[] tooltips = getResources().getStringArray(R.array.tooltips);
+		//createDialog((int) Math.floor(Math.random() * tooltips.length),
+			//	tooltips);
 	}
-	
+
 	private void createDialog(final int position, final String[] tooltips) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle(R.string.tooltips_title);
 		builder.setIcon(R.drawable.ic_stat_tooltips);
 		builder.setMessage(tooltips[position]);
 		// Add the buttons
-		builder.setNegativeButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-		           public void onClick(DialogInterface dialog, int id) {
-		               // User clicked OK button
-		        	   dialog.dismiss();
-		           }
-		       });
-		builder.setPositiveButton(R.string.next, new DialogInterface.OnClickListener() {
-		           public void onClick(DialogInterface dialog, int id) {
-		               // User cancelled the dialog
-		        	   dialog.dismiss();
-		        	   createDialog((position + 1) % tooltips.length, tooltips);
-		           }
-		       });
+		builder.setNegativeButton(android.R.string.ok,
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int id) {
+						// User clicked OK button
+						dialog.dismiss();
+					}
+				});
+		builder.setPositiveButton(R.string.next,
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int id) {
+						// User cancelled the dialog
+						dialog.dismiss();
+						createDialog((position + 1) % tooltips.length, tooltips);
+					}
+				});
 
 		// Create the AlertDialog
 		AlertDialog dialog = builder.create();
@@ -127,6 +130,13 @@ public class MainActivity extends Activity {
 			Intent intent = new Intent(this.getApplicationContext(),
 					NumberPracticeActivity.class);
 			startActivity(intent);
+			return true;
+		}
+
+		case R.id.action_question: {
+			String[] tooltips = getResources().getStringArray(R.array.tooltips);
+			createDialog((int) Math.floor(Math.random() * tooltips.length),
+					tooltips);
 			return true;
 		}
 		case R.id.action_about: {

@@ -2,6 +2,9 @@ package com.ahuralab.farsialphabet;
 
 import java.util.List;
 
+import com.google.ads.AdRequest;
+import com.google.ads.AdView;
+
 import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.app.AlertDialog;
@@ -102,10 +105,9 @@ public class WordCanvasActivity extends FragmentActivity implements
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		
+
 		case R.id.action_question:
-			showDialog(
-					getString(R.string.words_help),
+			showDialog(getString(R.string.words_help),
 					getString(R.string.attention));
 			break;
 		case android.R.id.home: {
@@ -164,6 +166,10 @@ public class WordCanvasActivity extends FragmentActivity implements
 			wordCanvas = (CanvasTextView) rootView
 					.findViewById(R.id.wordCanvas);
 			wordCanvas.setText(getArguments().getString(ARG_FARSI_WORD));
+
+			AdView adView = (AdView) rootView.findViewById(R.id.ad);
+			adView.loadAd(new AdRequest());
+
 			return rootView;
 		}
 
@@ -172,7 +178,7 @@ public class WordCanvasActivity extends FragmentActivity implements
 		}
 
 	}
-	
+
 	protected void showDialog(String message, String title) {
 
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
