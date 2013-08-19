@@ -32,7 +32,7 @@ public class WordItem {
 		EXAMPLE_WORDS.put("ﺝ",
 				createWords("جام", "کجا", "کج", "Cup", "Where", "Crank"));
 		EXAMPLE_WORDS.put("ﭺ",
-				createWords("چب", "هیچکس", "مچ", "Left", "Nobody", "Wrist"));
+				createWords("چپ", "هیچکس", "مچ", "Left", "Nobody", "Wrist"));
 		EXAMPLE_WORDS
 				.put("ﺡ",
 						createWords("حس", "محبوب", "فرح", "Feeling", "Popular",
@@ -46,14 +46,14 @@ public class WordItem {
 				createWords("دستور", "ادب", "سبد", "Command", "Curtsey",
 						"Basket"));
 		EXAMPLE_WORDS.put("ﺫ",
-				createWords("ذات", "بذر", "اتخاذ ", "Nature", "Seed", "Take"));
+				createWords("ذات", "بذر", "اتخاذ", "Nature", "Seed", "Take"));
 		EXAMPLE_WORDS.put("ﺭ",
 				createWords("راز", "برگ", "بهار", "Secret", "Leave", "Spring"));
 		EXAMPLE_WORDS.put("ﺯ",
 				createWords("زشت", "بز", "راز", "Ugly", "Goat", "Secret"));
 		EXAMPLE_WORDS.put(
 				"ژ",
-				createWords("ژاله", "پژمان", "شوفاژ", "Jaleh", "Pejman",
+				createWords("ژاله", "پژواک", "شوفاژ", "Jaleh", "Echo",
 						"Radiator"));
 		EXAMPLE_WORDS.put("ﺱ",
 				createWords("سطل", "اسم", "خیس", "Bucket", "Name", "Wet"));

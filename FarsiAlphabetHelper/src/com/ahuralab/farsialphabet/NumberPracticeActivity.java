@@ -156,11 +156,10 @@ public class NumberPracticeActivity extends FragmentActivity implements
 			canvas = (CanvasTextView) rootView
 					.findViewById(R.id.numberPracticeCanvas);
 			canvas.setText(getArguments().getString(ARG_LETTER));
-			
+
 			AdView adView = (AdView) rootView.findViewById(R.id.ad);
 			adView.loadAd(new AdRequest());
 
-			
 			return rootView;
 		}
 	}

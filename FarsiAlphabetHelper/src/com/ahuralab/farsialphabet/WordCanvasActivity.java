@@ -1,5 +1,9 @@
 package com.ahuralab.farsialphabet;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.List;
 
 import com.google.ads.AdRequest;
@@ -9,6 +13,7 @@ import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.ClipData.Item;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -32,6 +37,7 @@ public class WordCanvasActivity extends FragmentActivity implements
 	public static final String INTENT_LETTER_FILTER = "letter_filter";
 
 	List<WordItem> items = null;
+	static List<LettersInWordItem> letterItems = null;
 	private DummySectionFragment fragment;
 
 	@Override
@@ -153,7 +159,11 @@ public class WordCanvasActivity extends FragmentActivity implements
 		 */
 		public static final String ARG_FARSI_WORD = "section_number";
 
+		private static ByteArrayInputStream inputStream;
+
 		private CanvasTextView wordCanvas;
+		private CanvasTextView wordCanvasLetters1;
+		private CanvasTextView wordCanvasLetters2;
 
 		public DummySectionFragment() {
 		}
@@ -163,6 +173,23 @@ public class WordCanvasActivity extends FragmentActivity implements
 				Bundle savedInstanceState) {
 			View rootView = inflater.inflate(
 					R.layout.fragment_word_canvas_dummy, container, false);
+			wordCanvasLetters1 = (CanvasTextView) rootView
+					.findViewById(R.id.wordLettersCanvas);
+			wordCanvasLetters2 = (CanvasTextView) rootView
+					.findViewById(R.id.pronounciationCanvas);
+			String i = getArguments().getString(ARG_FARSI_WORD);
+			letterItems = LettersInWordItem.EXAMPLE_WORDS_LETTERS
+					.get(getArguments().getString(ARG_FARSI_WORD));
+			/*
+			 * inputStream = letterItems.toString();
+			 * 
+			 * InputStreamReader reader = new InputStreamReader(inputStream);
+			 * char[] buf = null; try { reader.read(buf); } catch (IOException
+			 * e) { // TODO Auto-generated catch block e.printStackTrace(); }
+			 */
+
+			wordCanvasLetters1.setText(createText(letterItems));
+
 			wordCanvas = (CanvasTextView) rootView
 					.findViewById(R.id.wordCanvas);
 			wordCanvas.setText(getArguments().getString(ARG_FARSI_WORD));
@@ -171,6 +198,25 @@ public class WordCanvasActivity extends FragmentActivity implements
 			adView.loadAd(new AdRequest());
 
 			return rootView;
+		}
+
+		private String createText(List<LettersInWordItem> letterItems) {
+			int numberOfLetters = letterItems.size();
+			String text1 = "Letters in this word: ";
+			String text2 = "Prononciation: ";
+
+			for (int i = 0; i < numberOfLetters; i++) {
+				if (i == numberOfLetters - 1) {
+					text2 = text2 + letterItems.get(i).letterElement;
+					wordCanvasLetters2.setText(text2);
+				} else if(i == numberOfLetters - 2){
+					text1 = text1 + letterItems.get(i).letterElement;
+				}
+				else {
+					text1 = text1 + letterItems.get(i).letterElement + " - ";
+				}
+			}
+			return text1;
 		}
 
 		CanvasTextView getWordCanvas() {

@@ -8,6 +8,20 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".WordCanvasActivity$DummySectionFragment" >
+    
+    
+     <com.ahuralab.farsialphabet.CanvasTextView
+        android:id="@+id/wordLettersCanvas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:gravity="top"
+        android:hint="@string/letter_canvas_hint"
+        android:text="ش"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FF0000"
+        android:textSize="@dimen/secondary_letter_size" />
+    
 
     <com.ahuralab.farsialphabet.CanvasTextView
         android:id="@+id/wordCanvas"
@@ -22,7 +36,8 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#FF0000"
         android:textSize="@dimen/letter_canvas_size" />
-
+    
+    
     <com.google.ads.AdView
         xmlns:googleads="http://schemas.android.com/apk/lib/com.google.ads"
         android:id="@+id/ad"
@@ -30,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:adSize="BANNER"
-        app:adUnitId="ID"
+        app:adUnitId="ca-app-pub-7994351970844090/8947095363"
         app:testDevices="TEST_EMULATOR, TEST_DEVICE_ID" >
     </com.google.ads.AdView>
 

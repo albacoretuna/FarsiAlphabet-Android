@@ -29,9 +29,9 @@ public class MainActivity extends Activity {
 		// Increment app opened counter
 		// showRateUsDialogIfNecessary();
 
-		//String[] tooltips = getResources().getStringArray(R.array.tooltips);
-		//createDialog((int) Math.floor(Math.random() * tooltips.length),
-			//	tooltips);
+		// String[] tooltips = getResources().getStringArray(R.array.tooltips);
+		// createDialog((int) Math.floor(Math.random() * tooltips.length),
+		// tooltips);
 	}
 
 	private void createDialog(final int position, final String[] tooltips) {

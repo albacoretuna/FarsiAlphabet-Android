@@ -49,8 +49,7 @@ public class LetterPracticeActivity extends FragmentActivity implements
 		setContentView(R.layout.activity_letter_practice);
 
 		/*
-		 * // Create the adView adView = new AdView(this, AdSize.BANNER,
-		 * "ID");
+		 * // Create the adView adView = new AdView(this, AdSize.BANNER, "ID");
 		 * 
 		 * // Lookup your LinearLayout assuming it's been given // the attribute
 		 * android:id="@+id/mainLayout" FrameLayout layout =

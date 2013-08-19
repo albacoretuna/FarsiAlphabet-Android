@@ -3,7 +3,8 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="main_letter_size">60dp</dimen>
+    <dimen name="third_letter_size">25dp</dimen>
     <dimen name="secondary_letter_size">45dp</dimen>
     <dimen name="main_letter_box_size">85dp</dimen>
-    <dimen name="letter_canvas_size">165dp</dimen>
+    <dimen name="letter_canvas_size">154dp</dimen>
 </resources>
