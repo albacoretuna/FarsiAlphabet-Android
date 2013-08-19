@@ -18,18 +18,27 @@
         android:gravity="top"
         android:hint="@string/letter_canvas_hint"
         android:text="ش"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#FF0000"
-        android:textSize="@dimen/secondary_letter_size" />
+        android:textSize="@dimen/third_letter_size" />
+     
+      <com.ahuralab.farsialphabet.CanvasTextView
+        android:id="@+id/pronounciationCanvas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"  
+        android:layout_below="@+id/wordLettersCanvas"
+        android:hint="@string/letter_canvas_hint"
+        android:text="ش"
+        android:textColor="#FF0000"
+        android:textSize="@dimen/third_letter_size" />
     
 
     <com.ahuralab.farsialphabet.CanvasTextView
         android:id="@+id/wordCanvas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+       
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
+        android:layout_below="@id/pronounciationCanvas"
         android:gravity="center"
         android:hint="@string/letter_canvas_hint"
         android:text="ش"
@@ -45,8 +54,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:adSize="BANNER"
-        app:adUnitId="ca-app-pub-7994351970844090/8947095363"
+        app:adUnitId="ID"
         app:testDevices="TEST_EMULATOR, TEST_DEVICE_ID" >
     </com.google.ads.AdView>
+
+   
 
 </RelativeLayout>
