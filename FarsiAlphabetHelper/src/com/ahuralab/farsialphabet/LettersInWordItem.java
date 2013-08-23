@@ -1,9 +1,7 @@
 package com.ahuralab.farsialphabet;
 
 import java.util.ArrayList;
-import static java.util.Arrays.asList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -14,7 +12,8 @@ import java.util.Map;
  */
 public class LettersInWordItem {
 
-	public final static Map<String, ArrayList<LettersInWordItem>> EXAMPLE_WORDS_LETTERS = new HashMap<String, ArrayList<LettersInWordItem>>();
+	public final static Map<String, ArrayList<LettersInWordItem>> EXAMPLE_WORDS_LETTERS = 
+			new HashMap<String, ArrayList<LettersInWordItem>>();
 
 	static {
 		EXAMPLE_WORDS_LETTERS.put("آب", createArrayList("ب", "آ", "ɐb"));
@@ -34,14 +33,14 @@ public class LettersInWordItem {
 		EXAMPLE_WORDS_LETTERS
 				.put("دست", createArrayList("ت", "س", "د", "dæst"));
 		EXAMPLE_WORDS_LETTERS.put("ثریا",
-				createArrayList("ا", "ی", "ر", "ث", "səʊræIæ"));
+				createArrayList("ا", "ی", "ر", "ث", "səʊræjɐ"));
 		EXAMPLE_WORDS_LETTERS.put("میثم",
-				createArrayList("م", "ث", "ی", "م", "meIsæm"));
+				createArrayList("م", "ث", "ی", "م", "meəsæm"));
 		EXAMPLE_WORDS_LETTERS.put("مثلث",
 				createArrayList("ث", "ل", "ث", "م", "məʊsælæs"));
 		EXAMPLE_WORDS_LETTERS.put("جام", createArrayList("م", "ا", "ج", "jɐm"));
 		EXAMPLE_WORDS_LETTERS.put("کجا",
-				createArrayList("ا", "ج", "ک", "kəʊjæ"));
+				createArrayList("ا", "ج", "ک", "kəʊjɐ"));
 		EXAMPLE_WORDS_LETTERS.put("کج", createArrayList("ج", "ک", "kæj"));
 		EXAMPLE_WORDS_LETTERS.put("چپ", createArrayList("پ", "چ", "tʃæp"));
 		EXAMPLE_WORDS_LETTERS.put("هیچکس",
@@ -106,8 +105,8 @@ public class LettersInWordItem {
 				createArrayList("م", "و", "ل", "ظ", "م", "mæzlu:m"));
 		EXAMPLE_WORDS_LETTERS.put("ظلم",
 				createArrayList("م", "ل", "ظ", "zəʊlm"));
-		EXAMPLE_WORDS_LETTERS.put("علی",
-				createArrayList("ی", "ل", "ع", "Ali", "æli:"));
+		EXAMPLE_WORDS_LETTERS
+				.put("علی", createArrayList("ی", "ل", "ع", "æli:"));
 		EXAMPLE_WORDS_LETTERS.put("معلم",
 				createArrayList("م", "ل", "ع", "م", "məʊælem"));
 		EXAMPLE_WORDS_LETTERS.put("طلوع",
@@ -157,7 +156,7 @@ public class LettersInWordItem {
 		EXAMPLE_WORDS_LETTERS.put("بی بی",
 				createArrayList("ی ", "ب", "ی ", "ب", "bi:bi:"));
 		EXAMPLE_WORDS_LETTERS.put("یلدا",
-				createArrayList("ا", "د", "ل", "ی", "Yældɐ"));
+				createArrayList("ا", "د", "ل", "ی", "jældɐ"));
 	}
 
 	public final String letterElement;

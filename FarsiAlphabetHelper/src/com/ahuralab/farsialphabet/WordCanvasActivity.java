@@ -1,9 +1,6 @@
 package com.ahuralab.farsialphabet;
 
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.List;
 
 import com.google.ads.AdRequest;
@@ -13,7 +10,6 @@ import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.ClipData.Item;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -37,7 +33,7 @@ public class WordCanvasActivity extends FragmentActivity implements
 	public static final String INTENT_LETTER_FILTER = "letter_filter";
 
 	List<WordItem> items = null;
-	static List<LettersInWordItem> letterItems = null;
+	static List<LettersInWordItem> letterItemsInWords = null;
 	private DummySectionFragment fragment;
 
 	@Override
@@ -178,7 +174,7 @@ public class WordCanvasActivity extends FragmentActivity implements
 			wordCanvasLetters2 = (CanvasTextView) rootView
 					.findViewById(R.id.pronounciationCanvas);
 			String i = getArguments().getString(ARG_FARSI_WORD);
-			letterItems = LettersInWordItem.EXAMPLE_WORDS_LETTERS
+			letterItemsInWords = LettersInWordItem.EXAMPLE_WORDS_LETTERS
 					.get(getArguments().getString(ARG_FARSI_WORD));
 			/*
 			 * inputStream = letterItems.toString();
@@ -188,7 +184,7 @@ public class WordCanvasActivity extends FragmentActivity implements
 			 * e) { // TODO Auto-generated catch block e.printStackTrace(); }
 			 */
 
-			wordCanvasLetters1.setText(createText(letterItems));
+			wordCanvasLetters1.setText(createText(letterItemsInWords));
 
 			wordCanvas = (CanvasTextView) rootView
 					.findViewById(R.id.wordCanvas);
@@ -202,8 +198,8 @@ public class WordCanvasActivity extends FragmentActivity implements
 
 		private String createText(List<LettersInWordItem> letterItems) {
 			int numberOfLetters = letterItems.size();
-			String text1 = "Letters in this word: ";
-			String text2 = "Prononciation: ";
+			String text1 = "Letters: ";
+			String text2 = "Pronunciation: ";
 
 			for (int i = 0; i < numberOfLetters; i++) {
 				if (i == numberOfLetters - 1) {
