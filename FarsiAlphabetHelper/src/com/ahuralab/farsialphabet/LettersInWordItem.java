@@ -38,10 +38,10 @@ public class LettersInWordItem {
 				createArrayList("م", "ث", "ی", "م", "meəsæm"));
 		EXAMPLE_WORDS_LETTERS.put("مثلث",
 				createArrayList("ث", "ل", "ث", "م", "məʊsælæs"));
-		EXAMPLE_WORDS_LETTERS.put("جام", createArrayList("م", "ا", "ج", "jɐm"));
+		EXAMPLE_WORDS_LETTERS.put("جام", createArrayList("م", "ا", "ج", "ʤɐm"));
 		EXAMPLE_WORDS_LETTERS.put("کجا",
-				createArrayList("ا", "ج", "ک", "kəʊjɐ"));
-		EXAMPLE_WORDS_LETTERS.put("کج", createArrayList("ج", "ک", "kæj"));
+				createArrayList("ا", "ج", "ک", "kəʊʤɐ"));
+		EXAMPLE_WORDS_LETTERS.put("کج", createArrayList("ج", "ک", "kæʤ"));
 		EXAMPLE_WORDS_LETTERS.put("چپ", createArrayList("پ", "چ", "tʃæp"));
 		EXAMPLE_WORDS_LETTERS.put("هیچکس",
 				createArrayList("س", "ک", "چ", "ی", "ه", "hItʃkæs"));

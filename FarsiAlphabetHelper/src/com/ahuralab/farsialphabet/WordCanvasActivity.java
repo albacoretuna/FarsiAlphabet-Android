@@ -1,6 +1,5 @@
 package com.ahuralab.farsialphabet;
 
-import java.io.ByteArrayInputStream;
 import java.util.List;
 
 import com.google.ads.AdRequest;
@@ -155,7 +154,7 @@ public class WordCanvasActivity extends FragmentActivity implements
 		 */
 		public static final String ARG_FARSI_WORD = "section_number";
 
-		private static ByteArrayInputStream inputStream;
+		// private static ByteArrayInputStream inputStream;
 
 		private CanvasTextView wordCanvas;
 		private CanvasTextView wordCanvasLetters1;
@@ -173,18 +172,13 @@ public class WordCanvasActivity extends FragmentActivity implements
 					.findViewById(R.id.wordLettersCanvas);
 			wordCanvasLetters2 = (CanvasTextView) rootView
 					.findViewById(R.id.pronounciationCanvas);
-			String i = getArguments().getString(ARG_FARSI_WORD);
+			// String i = getArguments().getString(ARG_FARSI_WORD);
 			letterItemsInWords = LettersInWordItem.EXAMPLE_WORDS_LETTERS
 					.get(getArguments().getString(ARG_FARSI_WORD));
-			/*
-			 * inputStream = letterItems.toString();
-			 * 
-			 * InputStreamReader reader = new InputStreamReader(inputStream);
-			 * char[] buf = null; try { reader.read(buf); } catch (IOException
-			 * e) { // TODO Auto-generated catch block e.printStackTrace(); }
-			 */
 
-			wordCanvasLetters1.setText(createText(letterItemsInWords));
+			if (letterItemsInWords != null) {
+				wordCanvasLetters1.setText(createText(letterItemsInWords));
+			}
 
 			wordCanvas = (CanvasTextView) rootView
 					.findViewById(R.id.wordCanvas);
@@ -205,10 +199,9 @@ public class WordCanvasActivity extends FragmentActivity implements
 				if (i == numberOfLetters - 1) {
 					text2 = text2 + letterItems.get(i).letterElement;
 					wordCanvasLetters2.setText(text2);
-				} else if(i == numberOfLetters - 2){
+				} else if (i == numberOfLetters - 2) {
 					text1 = text1 + letterItems.get(i).letterElement;
-				}
-				else {
+				} else {
 					text1 = text1 + letterItems.get(i).letterElement + " - ";
 				}
 			}

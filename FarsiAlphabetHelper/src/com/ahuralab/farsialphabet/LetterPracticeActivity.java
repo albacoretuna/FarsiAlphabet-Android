@@ -36,8 +36,7 @@ public class LetterPracticeActivity extends FragmentActivity implements
 	public static final int BEGIN = 1;
 	public static final int MIDDLE = 2;
 	public static final int END = 3;
-	
-	
+
 	static List<LetterPhonologyItem> letterPhonologyItems = null;
 
 	public static final String LETTER_INTENT_EXTRA = "LetterItem";
@@ -46,16 +45,13 @@ public class LetterPracticeActivity extends FragmentActivity implements
 	private LetterItem letterItem;
 	private DummySectionFragment fragment;
 
-	private AdView adView;
-
+	// private AdView adView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_letter_practice);
-		
-		
-  
+
 		/*
 		 * // Create the adView adView = new AdView(this, AdSize.BANNER, "ID");
 		 * 
@@ -74,7 +70,6 @@ public class LetterPracticeActivity extends FragmentActivity implements
 		setTitle(getResources().getString(
 				R.string.title_activity_letter_practice)
 				+ letterItem.isolated + " (" + letterItem.name + ")");
-	
 
 		// Set up the action bar to show a dropdown list.
 		final ActionBar actionBar = getActionBar();
@@ -201,7 +196,6 @@ public class LetterPracticeActivity extends FragmentActivity implements
 		fragment = new DummySectionFragment();
 		Bundle args = new Bundle();
 		String letter = "";
-		
 		String isolatedLetter = "";
 		isolatedLetter = letterItem.isolated;
 		switch (position) {
@@ -222,9 +216,9 @@ public class LetterPracticeActivity extends FragmentActivity implements
 			break;
 		}
 		}
-		String[] value = {isolatedLetter, letter};
-		args.putStringArray(DummySectionFragment.ARG_LETTER, value);
-		//args.putString(DummySectionFragment.ARG_LETTER, letter);
+		String[] value = { isolatedLetter, letter };
+		args.putStringArray(DummySectionFragment.ARG_LETTER_PHONOLOGY, value);
+		// args.putString(DummySectionFragment.ARG_LETTER, letter);
 		fragment.setArguments(args);
 		getSupportFragmentManager().beginTransaction()
 				.replace(R.id.container, fragment).commit();
@@ -237,7 +231,7 @@ public class LetterPracticeActivity extends FragmentActivity implements
 	 */
 	public static class DummySectionFragment extends Fragment {
 
-		public static final String ARG_LETTER = "letter";
+		public static final String ARG_LETTER_PHONOLOGY = "letter_phonology";
 		CanvasTextView canvas;
 		CanvasTextView phonologyCanvasLetters;
 
@@ -249,49 +243,47 @@ public class LetterPracticeActivity extends FragmentActivity implements
 				Bundle savedInstanceState) {
 			View rootView = inflater.inflate(
 					R.layout.fragment_letter_practice_dummy, container, false);
-			phonologyCanvasLetters = (CanvasTextView) rootView
-					.findViewById(R.id.pronounciationPhonology);
-			
-			letterPhonologyItems = LetterPhonologyItem.EXAMPLE_PHONOLOGY_LETTERS
-				.get(getArguments().getStringArray(ARG_LETTER)[0]);
-			
-			
-			phonologyCanvasLetters.setText(createTextPhonology(letterPhonologyItems));
-			
+
 			canvas = (CanvasTextView) rootView
 					.findViewById(R.id.letterPracticeCanvas);
-			canvas.setText(getArguments().getStringArray(ARG_LETTER)[1]);	
+			canvas.setText(getArguments().getStringArray(ARG_LETTER_PHONOLOGY)[1]);
+
+			phonologyCanvasLetters = (CanvasTextView) rootView
+					.findViewById(R.id.pronounciationPhonology);
+
+			letterPhonologyItems = LetterPhonologyItem.EXAMPLE_PHONOLOGY_LETTERS
+					.get(getArguments().getStringArray(ARG_LETTER_PHONOLOGY)[0]);
+			if (letterPhonologyItems != null) {
+				phonologyCanvasLetters
+						.setText(createTextPhonology(letterPhonologyItems));
+			}
 
 			AdView adView = (AdView) rootView.findViewById(R.id.ad);
 			adView.loadAd(new AdRequest());
 
 			return rootView;
 		}
-		
-		private static String createTextPhonology(List<LetterPhonologyItem> items) {
-			int numberOfLetters = items.size();
-			String text1 = "Letters: ";
+
+		private static String createTextPhonology(
+				List<LetterPhonologyItem> items) {
+			int numberOfLetters = 0;
+
+			numberOfLetters = items.size();
+
+			String text1 = "Phonology: ";
 
 			for (int i = 0; i < numberOfLetters; i++) {
-				 if(i == numberOfLetters - 2){
-					text1 = text1 + items.get(i).letterElement;
-				}
-				else {
-					text1 = text1 + items.get(i).letterElement + " - ";
-				}
+
+				text1 = text1 + " \n " + items.get(i).letterElement;
 			}
+
 			return text1;
 		}
 	}
 
-	@Override
-	public void onDestroy() {
-		if (adView != null) {
-			adView.destroy();
-		}
-		super.onDestroy();
-	}
-
-		
+	/*
+	 * @Override public void onDestroy() { if (adView != null) {
+	 * adView.destroy(); } super.onDestroy(); }
+	 */
 
 }
