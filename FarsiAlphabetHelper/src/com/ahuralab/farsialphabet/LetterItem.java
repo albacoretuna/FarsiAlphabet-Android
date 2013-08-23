@@ -21,7 +21,7 @@ public class LetterItem implements Serializable {
 			new LetterItem("ʤi:m", "ﺝ", "ﺟ", "ـجـ", "ﺞ", R.raw.jim),
 			new LetterItem("tʃe", "ﭺ", "ﭼ", "ـچـ", "ﭻ", R.raw.che),
 			new LetterItem("he (heye jimi)", "ﺡ", "ﺣ", "ـحـ", "ﺢ", R.raw.he),
-			new LetterItem("khe", "ﺥ", "ﺧ", "ـخـ", "ﺦ", R.raw.khe),
+			new LetterItem("xe", "ﺥ", "ﺧ", "ـخـ", "ﺦ", R.raw.khe),
 			new LetterItem("dɐl", "ﺩ", "ﺩ", "ـد", "ـد", R.raw.dal),
 			new LetterItem("zɐl", "ﺫ", "ﺫ", "ـذ", "ـذ", R.raw.ze),
 			new LetterItem("re", "ﺭ", "ﺭ", "ـر", "ـر", R.raw.re),
@@ -45,7 +45,7 @@ public class LetterItem implements Serializable {
 			new LetterItem("vɐv", "و", "و", "ـو", "ـو", R.raw.ve),
 			new LetterItem("he (heye dəʊ-cheshm)", "ﻩ", "هـ", "ـهـ", "ـه",
 					R.raw.he),
-			new LetterItem("ye", "ﻯ", "ﻳ", "ـیـ", "ﯽ", R.raw.ey) };
+			new LetterItem("je", "ﻯ", "ﻳ", "ـیـ", "ﯽ", R.raw.ey) };
 
 	public final String name;
 	public final String isolated;

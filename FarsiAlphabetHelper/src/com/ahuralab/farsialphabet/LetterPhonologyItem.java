@@ -72,7 +72,7 @@ public class LetterPhonologyItem {
 						"ژی- :ʒi"));
 		EXAMPLE_PHONOLOGY_LETTERS.put(
 				"ﺱ",
-				createArrayList("سا- tɐ", "ﺳ- sæ or se or səʊ", "سو- :su",
+				createArrayList("سا- sɐ", "ﺳ- sæ or se or səʊ", "سو- :su",
 						"سی- :si"));
 		EXAMPLE_PHONOLOGY_LETTERS.put(
 				"ﺵ",
