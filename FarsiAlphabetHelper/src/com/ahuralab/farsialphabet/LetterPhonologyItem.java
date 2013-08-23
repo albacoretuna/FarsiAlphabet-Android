@@ -17,130 +17,130 @@ public class LetterPhonologyItem {
 
 	static {
 		EXAMPLE_PHONOLOGY_LETTERS.put("ﺍ",
-				createArrayList("آ- ɐ", "ﺍ- æ or e or əʊ", "ﺍو- u:", "ﺍی- :i"));
+				createArrayList("آ- ɐ", "ﺍ- æ, e or əʊ", "ﺍو- u:", "ﺍی- :i"));
 		EXAMPLE_PHONOLOGY_LETTERS.put(
 				"ب",
-				createArrayList("با- bɐ", "ﺑ- bæ or be or bəʊ", "بو- :bu",
+				createArrayList("با- bɐ", "ﺑ- bæ, be or bəʊ", "بو- :bu",
 						"بی- :bi"));
 		EXAMPLE_PHONOLOGY_LETTERS.put(
 				"پ",
-				createArrayList("پا- bɐ", "ﭘ- pæ or pe or pəʊ", "پو- :pu",
+				createArrayList("پا- bɐ", "ﭘ- pæ, pe or pəʊ", "پو- :pu",
 						"پی- :pi"));
 		EXAMPLE_PHONOLOGY_LETTERS.put(
 				"ﺕ",
-				createArrayList("تا- tɐ", "ﺗ- tæ or te or təʊ", "تو- :tu",
+				createArrayList("تا- tɐ", "ﺗ- tæ, te or təʊ", "تو- :tu",
 						"تی- :ti"));
 		EXAMPLE_PHONOLOGY_LETTERS.put(
 				"ﺙ",
-				createArrayList("ثا- sɐ", "ﺛ- sæ or se or səʊ", "ثو- :su",
+				createArrayList("ثا- sɐ", "ﺛ- sæ, se or səʊ", "ثو- :su",
 						"ثی- :si"));
 		EXAMPLE_PHONOLOGY_LETTERS.put(
 				"ﺝ",
-				createArrayList("جا- ʤɐ", "ﺟ- ʤæ or ʤe or ʤəʊ", "جو- :ʤu",
+				createArrayList("جا- ʤɐ", "ﺟ- ʤæ, ʤe or ʤəʊ", "جو- :ʤu",
 						"جی- :ʤi"));
 		EXAMPLE_PHONOLOGY_LETTERS.put(
 				"ﭺ",
-				createArrayList("چا- tʃɐ", "ﭼ- tʃæ or tʃe or tʃəʊ", "چو- :tʃu",
+				createArrayList("چا- tʃɐ", "ﭼ- tʃæ, tʃe or tʃəʊ", "چو- :tʃu",
 						"چی- :tʃi"));
 		EXAMPLE_PHONOLOGY_LETTERS.put(
 				"ﺡ",
-				createArrayList("حا- hɐ", "ﺣ- hæ or he or həʊ", "حو- :hu",
+				createArrayList("حا- hɐ", "ﺣ- hæ, he or həʊ", "حو- :hu",
 						"حی- :hi"));
 		EXAMPLE_PHONOLOGY_LETTERS.put(
 				"ﺥ",
-				createArrayList("خا- xɐ", "ﺧ- xæ or xe or xəʊ", "خو- :xu",
+				createArrayList("خا- xɐ", "ﺧ- xæ, xe or xəʊ", "خو- :xu",
 						"خی- :xi"));
 		EXAMPLE_PHONOLOGY_LETTERS.put(
 				"ﺩ",
-				createArrayList("ﺩا- dɐ", "ﺩ- dæ or de or dəʊ", "ﺩو- :xu",
+				createArrayList("ﺩا- dɐ", "ﺩ- dæ, de or dəʊ", "ﺩو- :xu",
 						"ﺩی- :xi"));
 		EXAMPLE_PHONOLOGY_LETTERS.put(
 				"ﺫ",
-				createArrayList("ذا- zɐ", "ﺫ- zæ or ze or zəʊ", "ﺫو- :zu",
+				createArrayList("ذا- zɐ", "ﺫ- zæ, ze or zəʊ", "ﺫو- :zu",
 						"ﺫی- :zi"));
 		EXAMPLE_PHONOLOGY_LETTERS.put(
 				"ﺭ",
-				createArrayList("را- rɐ", "ر- ræ or re or rəʊ", "رو- :ru",
+				createArrayList("را- rɐ", "ر- ræ, re or rəʊ", "رو- :ru",
 						"ری- :ri"));
 		EXAMPLE_PHONOLOGY_LETTERS.put(
 				"ﺯ",
-				createArrayList("ﺯا- zɐ", "ﺯ- zæ or ze or zəʊ", "ﺯو- :zu",
+				createArrayList("ﺯا- zɐ", "ﺯ- zæ, ze or zəʊ", "ﺯو- :zu",
 						"ﺯی- :zi"));
 		EXAMPLE_PHONOLOGY_LETTERS.put(
 				"ژ",
-				createArrayList("ژا- ʒɐ", "ژ- ʒæ or ʒe or ʒəʊ", "ژو- :ʒu",
+				createArrayList("ژا- ʒɐ", "ژ- ʒæ, ʒe or ʒəʊ", "ژو- :ʒu",
 						"ژی- :ʒi"));
 		EXAMPLE_PHONOLOGY_LETTERS.put(
 				"ﺱ",
-				createArrayList("سا- sɐ", "ﺳ- sæ or se or səʊ", "سو- :su",
+				createArrayList("سا- sɐ", "ﺳ- sæ, se or səʊ", "سو- :su",
 						"سی- :si"));
 		EXAMPLE_PHONOLOGY_LETTERS.put(
 				"ﺵ",
-				createArrayList("شا- shɐ", "ﺷ- shæ or she or shəʊ", "شو- :shu",
+				createArrayList("شا- shɐ", "ﺷ- shæ, she or shəʊ", "شو- :shu",
 						"شی- :shi"));
 		EXAMPLE_PHONOLOGY_LETTERS.put(
 				"ﺹ",
-				createArrayList("صا- sɐ", "ﺻ- sæ or se or səʊ", "صو- :su",
+				createArrayList("صا- sɐ", "ﺻ- sæ, se or səʊ", "صو- :su",
 						"صی- :si"));
 		EXAMPLE_PHONOLOGY_LETTERS.put(
 				"ﺽ",
-				createArrayList("ضا- zɐ", "ﺿ- zæ or ze or zəʊ", "ضو- :zu",
+				createArrayList("ضا- zɐ", "ﺿ- zæ, ze or zəʊ", "ضو- :zu",
 						"ضی- :zi"));
 		EXAMPLE_PHONOLOGY_LETTERS.put(
 				"ﻁ",
-				createArrayList("طا- tɐ", "ﻃ- tæ or te or təʊ", "طو- :tu",
+				createArrayList("طا- tɐ", "ﻃ- tæ, te or təʊ", "طو- :tu",
 						"طی- :ti"));
 		EXAMPLE_PHONOLOGY_LETTERS.put(
 				"ﻅ",
-				createArrayList("ظا- zɐ", "ﻇ- zæ or ze or zəʊ", "ظو- :zu",
+				createArrayList("ظا- zɐ", "ﻇ- zæ, ze or zəʊ", "ظو- :zu",
 						"ظی- :zi"));
 		EXAMPLE_PHONOLOGY_LETTERS
 				.put("ﻉ",
-						createArrayList("عا- ɐ", "ﻋ- æ or e or əʊ", "عو- :u",
+						createArrayList("عا- ɐ", "ﻋ- æ, e or əʊ", "عو- :u",
 								"عی- :i"));
 		EXAMPLE_PHONOLOGY_LETTERS.put(
 				"ﻍ",
-				createArrayList("غا- ɣɐ", "ﻏ- ɣæ or ɣe or ɣəʊ", "غو- :ɣu",
+				createArrayList("غا- ɣɐ", "ﻏ- ɣæ, ɣe or ɣəʊ", "غو- :ɣu",
 						"غی- :ɣi"));
 		EXAMPLE_PHONOLOGY_LETTERS.put(
 				"ﻑ",
-				createArrayList("فا- fɐ", "ﻓ- fæ or fe or fəʊ", "فو- :fu",
+				createArrayList("فا- fɐ", "ﻓ- fæ, fe or fəʊ", "فو- :fu",
 						"فی- :fi"));
 		EXAMPLE_PHONOLOGY_LETTERS.put(
 				"ﻕ",
-				createArrayList("قا- ɣɐ", "ﻗ- ɣæ or ɣe or ɣəʊ", "قو- :ɣu",
+				createArrayList("قا- ɣɐ", "ﻗ- ɣæ, ɣe or ɣəʊ", "قو- :ɣu",
 						"قی- :ɣi"));
 		EXAMPLE_PHONOLOGY_LETTERS.put(
 				"ک",
-				createArrayList("کا- kɐ", "ﮐ- kæ or ke or kəʊ", "کو- :ku",
+				createArrayList("کا- kɐ", "ﮐ- kæ, ke or kəʊ", "کو- :ku",
 						"کی- :ki"));
 		EXAMPLE_PHONOLOGY_LETTERS.put(
 				"گ",
-				createArrayList("گا- gɐ", "ﮔ- gæ or ge or gəʊ", "گو- :gu",
+				createArrayList("گا- gɐ", "ﮔ- gæ, ge or gəʊ", "گو- :gu",
 						"گی- :gi"));
 		EXAMPLE_PHONOLOGY_LETTERS.put(
 				"ﻝ",
-				createArrayList("لا- lɐ", "ﻟ- læ or le or ləʊ", "لو- :lu",
+				createArrayList("لا- lɐ", "ﻟ- læ, le or ləʊ", "لو- :lu",
 						"لی- :li"));
 		EXAMPLE_PHONOLOGY_LETTERS.put(
 				"ﻡ",
-				createArrayList("ما- mɐ", "ﻣ- mæ or me or məʊ", "مو- :mu",
+				createArrayList("ما- mɐ", "ﻣ- mæ, me or məʊ", "مو- :mu",
 						"می- :mi"));
 		EXAMPLE_PHONOLOGY_LETTERS.put(
 				"ﻥ",
-				createArrayList("نا- nɐ", "ﻧ- næ or ne or nəʊ", "نو- :nu ",
+				createArrayList("نا- nɐ", "ﻧ- næ, ne or nəʊ", "نو- :nu ",
 						"نی- :ni"));
 		EXAMPLE_PHONOLOGY_LETTERS.put(
 				"و",
-				createArrayList("وا- vɐ", "و- væ or ve or vəʊ", "وو- :vu",
+				createArrayList("وا- vɐ", "و- væ, ve or vəʊ", "وو- :vu",
 						"وی- :vi"));
 		EXAMPLE_PHONOLOGY_LETTERS.put(
 				"ﻩ",
-				createArrayList("ها- hɐ", "هـ- hæ or he or həʊ", "هو- :hu",
+				createArrayList("ها- hɐ", "هـ- hæ, he or həʊ", "هو- :hu",
 						"هی- :hi"));
 		EXAMPLE_PHONOLOGY_LETTERS.put(
 				"ﻯ",
-				createArrayList("یا- jɐ", "ﻳ- jæ or je or jəʊ", "یو- :ju",
+				createArrayList("یا- jɐ", "ﻳ- jæ, je or jəʊ", "یو- :ju",
 						"یی- :ji"));
 	}
 
