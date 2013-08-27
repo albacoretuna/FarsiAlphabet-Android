@@ -24,7 +24,7 @@ public class LetterPhonologyItem {
 						"بی- :bi"));
 		EXAMPLE_PHONOLOGY_LETTERS.put(
 				"پ",
-				createArrayList("پا- bɐ", "ﭘ- pæ, pe or pəʊ", "پو- :pu",
+				createArrayList("پا- pɐ", "ﭘ- pæ, pe or pəʊ", "پو- :pu",
 						"پی- :pi"));
 		EXAMPLE_PHONOLOGY_LETTERS.put(
 				"ﺕ",

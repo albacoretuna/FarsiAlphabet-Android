@@ -20,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 public class WordCanvasActivity extends FragmentActivity implements
 		ActionBar.OnNavigationListener {
@@ -157,8 +158,8 @@ public class WordCanvasActivity extends FragmentActivity implements
 		// private static ByteArrayInputStream inputStream;
 
 		private CanvasTextView wordCanvas;
-		private CanvasTextView wordCanvasLetters1;
-		private CanvasTextView wordCanvasLetters2;
+		private TextView wordCanvasLetters1;
+		private TextView wordCanvasLetters2;
 
 		public DummySectionFragment() {
 		}
@@ -168,9 +169,9 @@ public class WordCanvasActivity extends FragmentActivity implements
 				Bundle savedInstanceState) {
 			View rootView = inflater.inflate(
 					R.layout.fragment_word_canvas_dummy, container, false);
-			wordCanvasLetters1 = (CanvasTextView) rootView
+			wordCanvasLetters1 = (TextView) rootView
 					.findViewById(R.id.wordLettersCanvas);
-			wordCanvasLetters2 = (CanvasTextView) rootView
+			wordCanvasLetters2 = (TextView) rootView
 					.findViewById(R.id.pronounciationCanvas);
 			// String i = getArguments().getString(ARG_FARSI_WORD);
 			letterItemsInWords = LettersInWordItem.EXAMPLE_WORDS_LETTERS

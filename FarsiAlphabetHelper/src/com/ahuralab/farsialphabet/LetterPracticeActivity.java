@@ -22,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 public class LetterPracticeActivity extends FragmentActivity implements
 		ActionBar.OnNavigationListener {
@@ -233,7 +234,7 @@ public class LetterPracticeActivity extends FragmentActivity implements
 
 		public static final String ARG_LETTER_PHONOLOGY = "letter_phonology";
 		CanvasTextView canvas;
-		CanvasTextView phonologyCanvasLetters;
+		TextView phonologyCanvasLetters;
 
 		public DummySectionFragment() {
 		}
@@ -248,7 +249,7 @@ public class LetterPracticeActivity extends FragmentActivity implements
 					.findViewById(R.id.letterPracticeCanvas);
 			canvas.setText(getArguments().getStringArray(ARG_LETTER_PHONOLOGY)[1]);
 
-			phonologyCanvasLetters = (CanvasTextView) rootView
+			phonologyCanvasLetters = (TextView) rootView
 					.findViewById(R.id.pronounciationPhonology);
 
 			letterPhonologyItems = LetterPhonologyItem.EXAMPLE_PHONOLOGY_LETTERS

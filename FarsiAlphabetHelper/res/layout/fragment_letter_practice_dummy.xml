@@ -13,6 +13,9 @@
         android:id="@+id/letterPracticeCanvas"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:layout_above="@+id/ad"
+        android:layout_below="@+id/pronounciationPhonology"
+        android:editable="false"
         android:gravity="center"
         android:hint="@string/letter_canvas_hint"
         android:text="ش"
@@ -20,7 +23,7 @@
         android:textColor="#FF0000"
         android:textSize="@dimen/letter_canvas_size" />
     
-     <com.ahuralab.farsialphabet.CanvasTextView
+     <TextView
         android:id="@+id/pronounciationPhonology"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"  
@@ -36,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:adSize="BANNER"
-        app:adUnitId="XXX"
+        app:adUnitId="xxxxxxxxxxx"
         app:testDevices="TEST_EMULATOR, TEST_DEVICE_ID" >
     </com.google.ads.AdView>
 

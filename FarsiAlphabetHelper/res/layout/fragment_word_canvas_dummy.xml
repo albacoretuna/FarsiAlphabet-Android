@@ -10,7 +10,7 @@
     tools:context=".WordCanvasActivity$DummySectionFragment" >
     
     
-     <com.ahuralab.farsialphabet.CanvasTextView
+     <TextView
         android:id="@+id/wordLettersCanvas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,7 +21,7 @@
         android:textColor="#FF0000"
         android:textSize="@dimen/third_letter_size" />
      
-      <com.ahuralab.farsialphabet.CanvasTextView
+      <TextView
         android:id="@+id/pronounciationCanvas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"  
@@ -31,21 +31,20 @@
         android:textColor="#FF0000"
         android:textSize="@dimen/third_letter_size" />
     
-
     <com.ahuralab.farsialphabet.CanvasTextView
         android:id="@+id/wordCanvas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-       
+        android:layout_above="@+id/ad"
         android:layout_alignParentLeft="true"
         android:layout_below="@id/pronounciationCanvas"
         android:gravity="center"
         android:hint="@string/letter_canvas_hint"
+        android:textSize="154sp"
         android:text="ش"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#FF0000"
-        android:textSize="@dimen/letter_canvas_size" />
-    
+        />
     
     <com.google.ads.AdView
         xmlns:googleads="http://schemas.android.com/apk/lib/com.google.ads"
@@ -54,8 +53,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:adSize="BANNER"
-        app:adUnitId="XXX"
-        app:testDevices="TEST_EMULATOR, TEST_DEVICE_ID" >
+        app:adUnitId="ca-app-pub-7994351970844090/8947095363"
+        app:testDevices="xxxxxxxxxxxxxxx" >
     </com.google.ads.AdView>
 
    
