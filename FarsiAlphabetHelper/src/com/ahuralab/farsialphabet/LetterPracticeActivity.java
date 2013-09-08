@@ -2,6 +2,7 @@ package com.ahuralab.farsialphabet;
 
 import java.util.List;
 
+import com.ahuralab.farsifragment.R;
 import com.google.ads.AdRequest;
 import com.google.ads.AdSize;
 import com.google.ads.AdView;
@@ -254,13 +255,15 @@ public class LetterPracticeActivity extends FragmentActivity implements
 
 			letterPhonologyItems = LetterPhonologyItem.EXAMPLE_PHONOLOGY_LETTERS
 					.get(getArguments().getStringArray(ARG_LETTER_PHONOLOGY)[0]);
-			if (letterPhonologyItems != null) {
+			if (letterPhonologyItems != null && phonologyCanvasLetters!=null) {
 				phonologyCanvasLetters
 						.setText(createTextPhonology(letterPhonologyItems));
 			}
 
 			AdView adView = (AdView) rootView.findViewById(R.id.ad);
-			adView.loadAd(new AdRequest());
+			if (adView != null) {
+				adView.loadAd(new AdRequest());
+			}
 
 			return rootView;
 		}
@@ -271,12 +274,14 @@ public class LetterPracticeActivity extends FragmentActivity implements
 
 			numberOfLetters = items.size();
 
-			String text1 = "Phonology: ";
+			String text1 = " Phonology: ";
 
 			for (int i = 0; i < numberOfLetters; i++) {
 
-				text1 = text1 + " \n " + items.get(i).letterElement;
+				text1 = " " + text1 + " \n " + " " + items.get(i).letterElement
+						+ " ";
 			}
+			text1 = text1 + "\n";
 
 			return text1;
 		}

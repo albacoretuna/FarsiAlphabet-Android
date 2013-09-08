@@ -2,6 +2,7 @@ package com.ahuralab.farsialphabet;
 
 import java.util.List;
 
+import com.ahuralab.farsifragment.R;
 import com.google.ads.AdRequest;
 import com.google.ads.AdView;
 
@@ -177,7 +178,7 @@ public class WordCanvasActivity extends FragmentActivity implements
 			letterItemsInWords = LettersInWordItem.EXAMPLE_WORDS_LETTERS
 					.get(getArguments().getString(ARG_FARSI_WORD));
 
-			if (letterItemsInWords != null) {
+			if (letterItemsInWords != null && wordCanvasLetters1!=null) {
 				wordCanvasLetters1.setText(createText(letterItemsInWords));
 			}
 
@@ -186,22 +187,24 @@ public class WordCanvasActivity extends FragmentActivity implements
 			wordCanvas.setText(getArguments().getString(ARG_FARSI_WORD));
 
 			AdView adView = (AdView) rootView.findViewById(R.id.ad);
+			if (adView != null) {
 			adView.loadAd(new AdRequest());
+			}
 
 			return rootView;
 		}
 
 		private String createText(List<LettersInWordItem> letterItems) {
 			int numberOfLetters = letterItems.size();
-			String text1 = "Letters: ";
-			String text2 = "Pronunciation: ";
+			String text1 = " Letters: ";
+			String text2 = " Pronunciation: ";
 
 			for (int i = 0; i < numberOfLetters; i++) {
 				if (i == numberOfLetters - 1) {
-					text2 = text2 + letterItems.get(i).letterElement;
+					text2 = "  " + text2  +  letterItems.get(i).letterElement + "\n";
 					wordCanvasLetters2.setText(text2);
 				} else if (i == numberOfLetters - 2) {
-					text1 = text1 + letterItems.get(i).letterElement;
+					text1 = "  " + text1 + letterItems.get(i).letterElement ;
 				} else {
 					text1 = text1 + letterItems.get(i).letterElement + " - ";
 				}

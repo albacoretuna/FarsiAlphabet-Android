@@ -3,6 +3,8 @@
  */
 package com.ahuralab.farsialphabet;
 
+import com.ahuralab.farsifragment.R;
+
 import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;

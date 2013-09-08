@@ -12,8 +12,7 @@ import java.util.Map;
  */
 public class LettersInWordItem {
 
-	public final static Map<String, ArrayList<LettersInWordItem>> EXAMPLE_WORDS_LETTERS = 
-			new HashMap<String, ArrayList<LettersInWordItem>>();
+	public final static Map<String, ArrayList<LettersInWordItem>> EXAMPLE_WORDS_LETTERS = new HashMap<String, ArrayList<LettersInWordItem>>();
 
 	static {
 		EXAMPLE_WORDS_LETTERS.put("آب", createArrayList("ب", "آ", "ɐb"));

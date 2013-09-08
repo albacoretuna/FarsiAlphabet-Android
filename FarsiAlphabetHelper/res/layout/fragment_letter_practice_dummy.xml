@@ -12,25 +12,27 @@
     <com.ahuralab.farsialphabet.CanvasTextView
         android:id="@+id/letterPracticeCanvas"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_above="@+id/ad"
         android:layout_below="@+id/pronounciationPhonology"
         android:editable="false"
-        android:gravity="center"
+        android:gravity="center|top"
         android:hint="@string/letter_canvas_hint"
         android:text="ش"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#FF0000"
-        android:textSize="@dimen/letter_canvas_size" />
+        android:textSize="200dp"/>
     
      <TextView
-        android:id="@+id/pronounciationPhonology"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"  
-        android:hint="@string/letter_canvas_hint"
-        android:text="ش"
-        android:textColor="#FF0000"
-        android:textSize="@dimen/third_letter_size" />
+         android:id="@+id/pronounciationPhonology"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_alignRight="@+id/letterPracticeCanvas"
+         android:hint="@string/letter_canvas_hint"
+         android:text="ش"
+         android:background="@drawable/rounded_border"
+         android:textAppearance="?android:attr/textAppearanceSmall"
+         android:textSize="@dimen/third_letter_size"
+         android:textColor="#01C5BB" />
 
     <com.google.ads.AdView
         xmlns:googleads="http://schemas.android.com/apk/lib/com.google.ads"
@@ -39,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:adSize="BANNER"
-        app:adUnitId="xxxxxxxxxxx"
+        app:adUnitId="ca-app-pub-7994351970844090/8947095363"
         app:testDevices="TEST_EMULATOR, TEST_DEVICE_ID" >
     </com.google.ads.AdView>
 

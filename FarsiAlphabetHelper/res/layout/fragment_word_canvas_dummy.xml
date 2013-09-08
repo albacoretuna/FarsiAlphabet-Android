@@ -8,44 +8,52 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".WordCanvasActivity$DummySectionFragment" >
-    
-    
-     <TextView
-        android:id="@+id/wordLettersCanvas"
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:gravity="top"
-        android:hint="@string/letter_canvas_hint"
-        android:text="ش"
-        android:textColor="#FF0000"
-        android:textSize="@dimen/third_letter_size" />
-     
-      <TextView
-        android:id="@+id/pronounciationCanvas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"  
-        android:layout_below="@+id/wordLettersCanvas"
-        android:hint="@string/letter_canvas_hint"
-        android:text="ش"
-        android:textColor="#FF0000"
-        android:textSize="@dimen/third_letter_size" />
-    
+        android:orientation="vertical"
+        android:id="@+id/layout_pronunciaton" 
+        android:background="@drawable/rounded_border">
+
+        <TextView
+            android:id="@+id/wordLettersCanvas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:gravity="top"
+            android:hint="@string/letter_canvas_hint"
+            android:text="ش"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#01C5BB"
+            android:textSize="@dimen/third_letter_size" />
+
+        <TextView
+            android:id="@+id/pronounciationCanvas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/wordLettersCanvas"
+            android:hint="@string/letter_canvas_hint"
+            android:text="ش"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#01C5BB"
+            android:textSize="@dimen/fourth_letter_size" />
+    </LinearLayout>
+
     <com.ahuralab.farsialphabet.CanvasTextView
         android:id="@+id/wordCanvas"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/ad"
         android:layout_alignParentLeft="true"
-        android:layout_below="@id/pronounciationCanvas"
+        android:layout_below="@id/layout_pronunciaton"
         android:gravity="center"
         android:hint="@string/letter_canvas_hint"
-        android:textSize="154sp"
         android:text="ش"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#FF0000"
-        />
-    
+        android:textSize="124sp" />
+
     <com.google.ads.AdView
         xmlns:googleads="http://schemas.android.com/apk/lib/com.google.ads"
         android:id="@+id/ad"
@@ -54,9 +62,7 @@
         android:layout_alignParentBottom="true"
         app:adSize="BANNER"
         app:adUnitId="ca-app-pub-7994351970844090/8947095363"
-        app:testDevices="xxxxxxxxxxxxxxx" >
+        app:testDevices="TEST_EMULATOR, TEST_DEVICE_ID" >
     </com.google.ads.AdView>
-
-   
 
 </RelativeLayout>

@@ -12,8 +12,7 @@ import java.util.Map;
  */
 public class LetterPhonologyItem {
 
-	public final static Map<String, ArrayList<LetterPhonologyItem>> EXAMPLE_PHONOLOGY_LETTERS = 
-			new HashMap<String, ArrayList<LetterPhonologyItem>>();
+	public final static Map<String, ArrayList<LetterPhonologyItem>> EXAMPLE_PHONOLOGY_LETTERS = new HashMap<String, ArrayList<LetterPhonologyItem>>();
 
 	static {
 		EXAMPLE_PHONOLOGY_LETTERS.put("ﺍ",
@@ -94,10 +93,8 @@ public class LetterPhonologyItem {
 				"ﻅ",
 				createArrayList("ظا- zɐ", "ﻇ- zæ, ze or zəʊ", "ظو- :zu",
 						"ظی- :zi"));
-		EXAMPLE_PHONOLOGY_LETTERS
-				.put("ﻉ",
-						createArrayList("عا- ɐ", "ﻋ- æ, e or əʊ", "عو- :u",
-								"عی- :i"));
+		EXAMPLE_PHONOLOGY_LETTERS.put("ﻉ",
+				createArrayList("عا- ɐ", "ﻋ- æ, e or əʊ", "عو- :u", "عی- :i"));
 		EXAMPLE_PHONOLOGY_LETTERS.put(
 				"ﻍ",
 				createArrayList("غا- ɣɐ", "ﻏ- ɣæ, ɣe or ɣəʊ", "غو- :ɣu",
