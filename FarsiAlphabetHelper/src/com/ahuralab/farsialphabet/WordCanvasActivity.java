@@ -2,7 +2,6 @@ package com.ahuralab.farsialphabet;
 
 import java.util.List;
 
-import com.ahuralab.farsifragment.R;
 import com.google.ads.AdRequest;
 import com.google.ads.AdView;
 

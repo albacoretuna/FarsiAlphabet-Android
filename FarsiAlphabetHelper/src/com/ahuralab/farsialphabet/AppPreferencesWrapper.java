@@ -20,7 +20,7 @@ public class AppPreferencesWrapper {
 
 	private final SharedPreferences preferences;
 
-	AppPreferencesWrapper(Context context) {
+	public AppPreferencesWrapper(Context context) {
 		this(context.getSharedPreferences(context.getPackageName(),
 				Context.MODE_PRIVATE));
 	}
@@ -33,7 +33,7 @@ public class AppPreferencesWrapper {
 		return preferences.getInt(APP_OPENED_COUNTER, 0);
 	}
 
-	int incrementAppOpenedCounter() {
+	public int incrementAppOpenedCounter() {
 		int count = 1 + getAppOpenedCount();
 		boolean result = preferences.edit().putInt(APP_OPENED_COUNTER, count)
 				.commit();
@@ -45,11 +45,11 @@ public class AppPreferencesWrapper {
 		return getAppOpenedCount();
 	}
 
-	boolean getShouldAskToRate() {
+	public boolean getShouldAskToRate() {
 		return preferences.getBoolean(SHOULD_ASK_TO_RATE, false);
 	}
 
-	boolean setShouldAskToRate(boolean value) {
+	public boolean setShouldAskToRate(boolean value) {
 		boolean result = preferences.edit()
 				.putBoolean(SHOULD_ASK_TO_RATE, value).commit();
 		if (!result) {
