@@ -158,7 +158,9 @@ public class NumberPracticeActivity extends FragmentActivity implements
 			canvas.setText(getArguments().getString(ARG_LETTER));
 
 			AdView adView = (AdView) rootView.findViewById(R.id.ad);
-			adView.loadAd(new AdRequest());
+			if (adView != null) {
+				adView.loadAd(new AdRequest());
+			}
 
 			return rootView;
 		}

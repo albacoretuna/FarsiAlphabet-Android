@@ -12,7 +12,10 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 /**
@@ -28,22 +31,27 @@ public class CanvasTextView extends TextView {
 	private List<Path> strokes = new ArrayList<Path>();
 	private Paint paint;
 	private Path currentPath;
+	private Context context;
 
 	Path middleLine;
 	Paint whitePaint;
+	private int CHANGE = 0;
 
 	public CanvasTextView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
+		this.context = context;
 		initialize(context);
 	}
 
 	public CanvasTextView(Context context, AttributeSet attrs) {
 		super(context, attrs);
+		this.context = context;
 		initialize(context);
 	}
 
 	public CanvasTextView(Context context) {
 		super(context);
+		this.context = context;
 		initialize(context);
 	}
 
@@ -66,17 +74,21 @@ public class CanvasTextView extends TextView {
 
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
-		if (event.getAction() == MotionEvent.ACTION_DOWN) {
+		
+		if (event.getAction() == MotionEvent.ACTION_DOWN) {	
 			// Discard any existing paths
 			currentPath = new Path();
 			currentPath.moveTo(event.getX(), event.getY());
 			currentPath.lineTo(event.getX(), event.getY());
+			
 		} else if (event.getAction() == MotionEvent.ACTION_MOVE) {
+			
 			if (currentPath == null) {
 				throw new RuntimeException("Path should not be null");
 			}
 			currentPath.lineTo(event.getX(), event.getY());
 		} else if (event.getAction() == MotionEvent.ACTION_UP) {
+			
 			currentPath.lineTo(event.getX(), event.getY());
 			strokes.add(currentPath);
 			currentPath = null;

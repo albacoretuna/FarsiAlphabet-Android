@@ -6,15 +6,17 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    tools:context=".LetterPracticeActivity$DummySectionFragment" >
+    tools:context=".NumberPracticeActivity$DummySectionFragment" >
 
-    <com.ahuralab.farsialphabet.CanvasTextView
-        android:id="@+id/letterPracticeCanvas"
+     <com.ahuralab.farsialphabet.CanvasTextView
+        android:id="@+id/numberPracticeCanvas"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         android:gravity="center"
         android:hint="@string/letter_canvas_hint"
         android:text="ش"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#FF0000"
-        android:textSize="@dimen/letter_canvas_size_land"/>
+        android:textSize="@dimen/number_canvas_size_land" />
+
 </RelativeLayout>

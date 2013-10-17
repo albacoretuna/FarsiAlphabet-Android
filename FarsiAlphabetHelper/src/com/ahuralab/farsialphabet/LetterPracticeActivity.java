@@ -3,7 +3,7 @@ package com.ahuralab.farsialphabet;
 import java.util.List;
 
 import com.google.ads.AdRequest;
-import com.google.ads.AdSize;
+
 import com.google.ads.AdView;
 
 import android.annotation.TargetApi;
@@ -18,10 +18,12 @@ import android.support.v4.app.NavUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+
 import android.view.View;
+
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.FrameLayout;
+
 import android.widget.TextView;
 
 public class LetterPracticeActivity extends FragmentActivity implements
@@ -248,17 +250,18 @@ public class LetterPracticeActivity extends FragmentActivity implements
 			canvas = (CanvasTextView) rootView
 					.findViewById(R.id.letterPracticeCanvas);
 			canvas.setText(getArguments().getStringArray(ARG_LETTER_PHONOLOGY)[1]);
+			
 
 			phonologyCanvasLetters = (TextView) rootView
 					.findViewById(R.id.pronounciationPhonology);
 
 			letterPhonologyItems = LetterPhonologyItem.EXAMPLE_PHONOLOGY_LETTERS
 					.get(getArguments().getStringArray(ARG_LETTER_PHONOLOGY)[0]);
-			if (letterPhonologyItems != null && phonologyCanvasLetters!=null) {
+			if (letterPhonologyItems != null && phonologyCanvasLetters != null) {
 				phonologyCanvasLetters
 						.setText(createTextPhonology(letterPhonologyItems));
 			}
-
+            // load add
 			AdView adView = (AdView) rootView.findViewById(R.id.ad);
 			if (adView != null) {
 				adView.loadAd(new AdRequest());
@@ -286,9 +289,6 @@ public class LetterPracticeActivity extends FragmentActivity implements
 		}
 	}
 
-	/*
-	 * @Override public void onDestroy() { if (adView != null) {
-	 * adView.destroy(); } super.onDestroy(); }
-	 */
+	
 
 }

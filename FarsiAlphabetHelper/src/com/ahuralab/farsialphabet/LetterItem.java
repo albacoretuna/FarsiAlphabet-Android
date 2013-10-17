@@ -2,7 +2,6 @@ package com.ahuralab.farsialphabet;
 
 import java.io.Serializable;
 
-
 /**
  * 
  * @author msama (michele.sama@gmail.com)

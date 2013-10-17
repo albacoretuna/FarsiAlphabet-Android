@@ -7,10 +7,10 @@
     <dimen name="fourth_letter_size">18dp</dimen>
     <dimen name="secondary_letter_size">45dp</dimen>
     <dimen name="main_letter_box_size">85dp</dimen>
-    <dimen name="letter_canvas_size">290sp</dimen>
-    <dimen name="letter_canvas_size_land">294sp</dimen>
-    <dimen name="word_canvas_size">180sp</dimen>
-    <dimen name="word_canvas_size_land">220sp</dimen>
-    <dimen name="number_canvas_size">370sp</dimen>
-    <dimen name="number_canvas_size_land">320sp</dimen>
+    <dimen name="letter_canvas_size">200sp</dimen>
+    <dimen name="letter_canvas_size_land">190sp</dimen>
+    <dimen name="word_canvas_size">90sp</dimen>
+    <dimen name="word_canvas_size_land">180sp</dimen>
+    <dimen name="number_canvas_size">300sp</dimen>
+    <dimen name="number_canvas_size_land">240sp</dimen>
 </resources>

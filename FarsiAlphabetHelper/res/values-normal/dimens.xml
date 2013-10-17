@@ -1,7 +1,6 @@
 <resources>
-    
     <!-- Default screen margins, per the Android Design guidelines. 
-     this is values for e.g. tablet 7inch-->
+         normal size e.g. The samsung camera-->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="main_letter_size">60dp</dimen>
@@ -9,13 +8,10 @@
     <dimen name="fourth_letter_size">18dp</dimen>
     <dimen name="secondary_letter_size">45dp</dimen>
     <dimen name="main_letter_box_size">85dp</dimen>
-    <dimen name="letter_canvas_size">290sp</dimen>
-    <dimen name="letter_canvas_size_land">294sp</dimen>
-    <dimen name="word_canvas_size">150sp</dimen>
-    <dimen name="word_canvas_size_land">220sp</dimen>
-    <dimen name="number_canvas_size">370sp</dimen>
-    <dimen name="number_canvas_size_land">320sp</dimen>
-
+    <dimen name="letter_canvas_size">240sp</dimen>
+    <dimen name="letter_canvas_size_land">244sp</dimen>
+    <dimen name="word_canvas_size">130sp</dimen>
+    <dimen name="word_canvas_size_land">210sp</dimen>
+    <dimen name="number_canvas_size">350sp</dimen>
+    <dimen name="number_canvas_size_land">300sp</dimen>
 </resources>
-
-

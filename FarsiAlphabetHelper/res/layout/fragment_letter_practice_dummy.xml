@@ -15,22 +15,23 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/ad"
         android:layout_below="@+id/pronounciationPhonology"
-        android:editable="false"
         android:gravity="center|top"
         android:hint="@string/letter_canvas_hint"
         android:text="ش"
         android:textColor="#FF0000"
-        android:textSize="200dp"/>
+        android:textSize="@dimen/letter_canvas_size"
+        />
     
      <TextView
          android:id="@+id/pronounciationPhonology"
-         android:layout_width="match_parent"
+         android:layout_width="fill_parent"
          android:layout_height="wrap_content"
          android:layout_alignRight="@+id/letterPracticeCanvas"
          android:hint="@string/letter_canvas_hint"
          android:text="ش"
          android:background="@drawable/rounded_border"
          android:textAppearance="?android:attr/textAppearanceSmall"
+         android:gravity="center_horizontal"
          android:textSize="@dimen/third_letter_size"
          android:textColor="#01C5BB" />
 
@@ -41,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:adSize="BANNER"
-        app:adUnitId="ca-app-pub-7994351970844090/8947095363"
+        app:adUnitId="xxxxx"
         app:testDevices="TEST_EMULATOR, TEST_DEVICE_ID" >
     </com.google.ads.AdView>
 

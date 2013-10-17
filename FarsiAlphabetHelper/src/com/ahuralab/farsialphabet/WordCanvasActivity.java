@@ -9,6 +9,8 @@ import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -17,9 +19,14 @@ import android.support.v4.app.NavUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+
 import android.view.View;
 import android.view.ViewGroup;
+
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
+
 import android.widget.TextView;
 
 public class WordCanvasActivity extends FragmentActivity implements
@@ -31,15 +38,20 @@ public class WordCanvasActivity extends FragmentActivity implements
 	 */
 	private static final String STATE_SELECTED_NAVIGATION_ITEM = "selected_navigation_item";
 	public static final String INTENT_LETTER_FILTER = "letter_filter";
-
+	
+	
 	List<WordItem> items = null;
 	static List<LettersInWordItem> letterItemsInWords = null;
 	private DummySectionFragment fragment;
+	static LinearLayout mainLayout;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+	
+	
 		setContentView(R.layout.activity_word_canvas);
+		int t = R.layout.fragmen_activity_main;
 
 		// Set up the action bar to show a dropdown list.
 		final ActionBar actionBar = getActionBar();
@@ -65,6 +77,7 @@ public class WordCanvasActivity extends FragmentActivity implements
 				new ArrayAdapter<WordItem>(getActionBarThemedContextCompat(),
 						android.R.layout.simple_list_item_1,
 						android.R.id.text1, items), this);
+
 	}
 
 	/**
@@ -158,36 +171,36 @@ public class WordCanvasActivity extends FragmentActivity implements
 		// private static ByteArrayInputStream inputStream;
 
 		private CanvasTextView wordCanvas;
-		private TextView wordCanvasLetters1;
-		private TextView wordCanvasLetters2;
+		private TextView wordLetters1;
+		private TextView wordLetters2;
+		View rootView;
 
 		public DummySectionFragment() {
+
 		}
 
 		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(
-					R.layout.fragment_word_canvas_dummy, container, false);
-			wordCanvasLetters1 = (TextView) rootView
+		public View onCreateView(final LayoutInflater inflater,
+				final ViewGroup container, Bundle savedInstanceState) {
+			rootView = inflater.inflate(R.layout.fragment_word_canvas_dummy,
+					container, false);
+			wordLetters1 = (TextView) rootView
 					.findViewById(R.id.wordLettersCanvas);
-			wordCanvasLetters2 = (TextView) rootView
+			wordLetters2 = (TextView) rootView
 					.findViewById(R.id.pronounciationCanvas);
-			// String i = getArguments().getString(ARG_FARSI_WORD);
 			letterItemsInWords = LettersInWordItem.EXAMPLE_WORDS_LETTERS
 					.get(getArguments().getString(ARG_FARSI_WORD));
-
-			if (letterItemsInWords != null && wordCanvasLetters1!=null) {
-				wordCanvasLetters1.setText(createText(letterItemsInWords));
+			if (letterItemsInWords != null && wordLetters1 != null) {
+				wordLetters1.setText(createText(letterItemsInWords));
 			}
 
 			wordCanvas = (CanvasTextView) rootView
 					.findViewById(R.id.wordCanvas);
 			wordCanvas.setText(getArguments().getString(ARG_FARSI_WORD));
-
+			
 			AdView adView = (AdView) rootView.findViewById(R.id.ad);
 			if (adView != null) {
-			adView.loadAd(new AdRequest());
+				adView.loadAd(new AdRequest());
 			}
 
 			return rootView;
@@ -200,10 +213,11 @@ public class WordCanvasActivity extends FragmentActivity implements
 
 			for (int i = 0; i < numberOfLetters; i++) {
 				if (i == numberOfLetters - 1) {
-					text2 = "  " + text2  +  letterItems.get(i).letterElement + "\n";
-					wordCanvasLetters2.setText(text2);
+					text2 = "  " + text2 + letterItems.get(i).letterElement
+							+ "\n";
+					wordLetters2.setText(text2);
 				} else if (i == numberOfLetters - 2) {
-					text1 = "  " + text1 + letterItems.get(i).letterElement ;
+					text1 = "  " + text1 + letterItems.get(i).letterElement;
 				} else {
 					text1 = text1 + letterItems.get(i).letterElement + " - ";
 				}

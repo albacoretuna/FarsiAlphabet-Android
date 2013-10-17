@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    
+
     <string name="title_section1">Alphabet</string>
     <string name="title_section2">Words</string>
-
     <string name="app_name">Farsi alphabet </string>
     <string name="title_activity_letter_canvas">LetterCanvasActivity</string>
     <string name="letter_canvas_hint">Slide over the letter to draw it.</string>
@@ -30,8 +29,19 @@
     <string name="title_activity_number_practice">Practive with numbers</string>
     <string name="words">Words</string>
     <string name="numbers">Numbers</string>
-    <string name="attention">Attentions</string>
+    <string name="attention">Attention</string>
     <string name="numbers_help">Numbers in Farsi , unlike the letters, are all written from left to right.</string>
     <string name="words_help">Letters and words in Farsi should be all written from right to left.</string>
+
+    <string-array name="planets_array">
+        <item>Alphabet</item>
+        <item>Farsi Greetings</item>
+        <item>Farsi Essential</item>
+    </string-array>
+
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="action_websearch">Web search</string>
+    <string name="app_not_available">Sorry, there\'s no web browser available</string>
 
 </resources>
