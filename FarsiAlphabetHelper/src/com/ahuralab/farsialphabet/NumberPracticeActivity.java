@@ -1,23 +1,32 @@
 package com.ahuralab.farsialphabet;
 
+
+
 import com.google.ads.AdRequest;
 import com.google.ads.AdView;
 
 import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.app.AlertDialog;
+import android.net.Uri;
 import android.os.Bundle;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.AdapterView.OnItemClickListener;
 
 public class NumberPracticeActivity extends FragmentActivity implements
 		ActionBar.OnNavigationListener {
@@ -29,6 +38,8 @@ public class NumberPracticeActivity extends FragmentActivity implements
 	 * current dropdown position.
 	 */
 	private static final String STATE_SELECTED_NAVIGATION_ITEM = "selected_navigation_item";
+	private DrawerLayout drawer;
+	private ListView navList;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,18 +47,59 @@ public class NumberPracticeActivity extends FragmentActivity implements
 		setContentView(R.layout.activity_number_practice);
 
 		// Set up the action bar to show a dropdown list.
-		final ActionBar actionBar = getActionBar();
-		actionBar.setDisplayShowTitleEnabled(false);
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
+		// final ActionBar actionBar = getActionBar();
+		// actionBar.setDisplayShowTitleEnabled(false);
+		// actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
 		// Show the Up button in the action bar.
-		actionBar.setDisplayHomeAsUpEnabled(true);
+		// actionBar.setDisplayHomeAsUpEnabled(true);
 
 		// Set up the dropdown list navigation in the action bar.
-		actionBar.setListNavigationCallbacks(
+		// actionBar.setListNavigationCallbacks(
 		// Specify a SpinnerAdapter to populate the dropdown list.
-				new ArrayAdapter<NumberItem>(getActionBarThemedContextCompat(),
-						android.R.layout.simple_list_item_1,
-						android.R.id.text1, NumberItem.NUMBERS), this);
+		ArrayAdapter<NumberItem> adapter = new ArrayAdapter<NumberItem>(
+				getActionBarThemedContextCompat(),
+				android.R.layout.simple_list_item_1, android.R.id.text1,
+				NumberItem.NUMBERS);
+		drawer = (DrawerLayout) findViewById(R.id.drawer_layout_number);
+		navList = (ListView) findViewById(R.id.drawer_number);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+		getActionBar().setHomeButtonEnabled(true);
+
+		navList.setAdapter(adapter);
+
+		drawer.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
+
+		navList.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					final int pos, long id) {
+				fragment = new DummySectionFragment();
+				Bundle args = new Bundle();
+				args.putString(DummySectionFragment.ARG_LETTER,
+						NumberItem.NUMBERS[pos].getValue());
+				fragment.setArguments(args);
+				getSupportFragmentManager().beginTransaction()
+						.replace(R.id.container, fragment).commit();
+				drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+				drawer.setDrawerListener(new DrawerLayout.SimpleDrawerListener() {
+					@Override
+					public void onDrawerClosed(View drawerView) {
+						super.onDrawerClosed(drawerView);
+
+					}
+
+				});
+				drawer.closeDrawer(navList);
+
+			}
+		});
+
+		if (savedInstanceState == null) {
+			savedInstanceState = new Bundle();
+		}
+		savedInstanceState.putInt(STATE_SELECTED_NAVIGATION_ITEM, 0);
+		onRestoreInstanceState(savedInstanceState);
+
 	}
 
 	/**
@@ -66,11 +118,14 @@ public class NumberPracticeActivity extends FragmentActivity implements
 
 	@Override
 	public void onRestoreInstanceState(Bundle savedInstanceState) {
-		// Restore the previously serialized current dropdown position.
-		if (savedInstanceState.containsKey(STATE_SELECTED_NAVIGATION_ITEM)) {
-			getActionBar().setSelectedNavigationItem(
-					savedInstanceState.getInt(STATE_SELECTED_NAVIGATION_ITEM));
-		}
+		fragment = new DummySectionFragment();
+		Bundle args = new Bundle();
+		args.putString(DummySectionFragment.ARG_LETTER,
+				NumberItem.NUMBERS[savedInstanceState
+						.getInt(STATE_SELECTED_NAVIGATION_ITEM)].getValue());
+		fragment.setArguments(args);
+		getSupportFragmentManager().beginTransaction()
+				.replace(R.id.container, fragment).commit();
 	}
 
 	@Override
@@ -90,13 +145,29 @@ public class NumberPracticeActivity extends FragmentActivity implements
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case R.id.action_question:
+
+		case R.id.action_snapshot: {
+			ShareScreenShot shareScreenShot = new  ShareScreenShot();
+			View _rootView = findViewById(android.R.id.content).getRootView();
+			Uri screenshotUri = 
+					shareScreenShot.saveScreenShot(shareScreenShot.takeScreenShot
+							(_rootView));
+
+			// send an email
+				
+			startActivity(Intent.createChooser(shareScreenShot.sendEmail(screenshotUri)
+					, "Send mail..."));
+			return true;
+		}
+
+		case R.id.action_question: {
 
 			showDialog(getString(R.string.numbers_help),
 					getString(R.string.attention));
 
 			return true;
-		case android.R.id.home:
+		}
+		case android.R.id.home: {
 			// This ID represents the Home or Up button. In the case of this
 			// activity, the Up button is shown. Use NavUtils to allow users
 			// to navigate up one level in the application structure. For
@@ -106,27 +177,25 @@ public class NumberPracticeActivity extends FragmentActivity implements
 			//
 			NavUtils.navigateUpFromSameTask(this);
 			return true;
+		}
 
 		case R.id.action_refresh: {
 			fragment.canvas.resetCanvas();
 			return true;
 		}
+		case R.id.action_drawer: {
+			drawer.openDrawer(navList);
+			return true;
+		}
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
 
 	@Override
 	public boolean onNavigationItemSelected(int position, long id) {
-		// When the given dropdown item is selected, show its contents in the
-		// container view.
-		fragment = new DummySectionFragment();
-		Bundle args = new Bundle();
-		args.putString(DummySectionFragment.ARG_LETTER,
-				NumberItem.NUMBERS[position].getValue());
-		fragment.setArguments(args);
-		getSupportFragmentManager().beginTransaction()
-				.replace(R.id.container, fragment).commit();
-		return true;
+
+		return false;
 	}
 
 	protected void showDialog(String message, String title) {

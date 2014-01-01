@@ -12,10 +12,8 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
+
 import android.view.MotionEvent;
-import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 /**
@@ -74,21 +72,21 @@ public class CanvasTextView extends TextView {
 
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
-		
-		if (event.getAction() == MotionEvent.ACTION_DOWN) {	
+
+		if (event.getAction() == MotionEvent.ACTION_DOWN) {
 			// Discard any existing paths
 			currentPath = new Path();
 			currentPath.moveTo(event.getX(), event.getY());
 			currentPath.lineTo(event.getX(), event.getY());
-			
+
 		} else if (event.getAction() == MotionEvent.ACTION_MOVE) {
-			
+
 			if (currentPath == null) {
 				throw new RuntimeException("Path should not be null");
 			}
 			currentPath.lineTo(event.getX(), event.getY());
 		} else if (event.getAction() == MotionEvent.ACTION_UP) {
-			
+
 			currentPath.lineTo(event.getX(), event.getY());
 			strokes.add(currentPath);
 			currentPath = null;

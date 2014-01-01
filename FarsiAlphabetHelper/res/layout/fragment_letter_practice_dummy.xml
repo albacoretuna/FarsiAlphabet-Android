@@ -19,8 +19,7 @@
         android:hint="@string/letter_canvas_hint"
         android:text="ش"
         android:textColor="#FF0000"
-        android:textSize="@dimen/letter_canvas_size"
-        />
+        android:textSize="@dimen/letter_canvas_size" />
     
      <TextView
          android:id="@+id/pronounciationPhonology"
@@ -42,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:adSize="BANNER"
-        app:adUnitId="xxxxx"
+        app:adUnitId="ca-app-pub-7994351970844090/8947095363"
         app:testDevices="TEST_EMULATOR, TEST_DEVICE_ID" >
     </com.google.ads.AdView>
 

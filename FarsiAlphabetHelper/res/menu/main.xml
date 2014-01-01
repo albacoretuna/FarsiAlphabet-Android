@@ -4,17 +4,17 @@
         android:id="@+id/action_question"
         android:icon="@drawable/ic_action_about"
         android:orderInCategory="100"
-        android:showAsAction="ifRoom"
+        android:showAsAction="always"
         android:title="@string/action_about"/>
     <item
         android:id="@+id/action_numbers"
         android:icon="@drawable/ic_action_numbers"
-        android:showAsAction="ifRoom|withText"
+        android:showAsAction="always|withText"
         android:title="@string/numbers"/>
     <item
         android:id="@+id/action_about"
         android:icon="@drawable/ic_more_info"
-        android:showAsAction="ifRoom"
+        android:showAsAction="always"
         android:title="@string/action_about"/>
-
+    
 </menu>

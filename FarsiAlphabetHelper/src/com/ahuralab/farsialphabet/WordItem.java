@@ -125,6 +125,7 @@ public class WordItem {
 		this.english = english;
 	}
 
+	@Override
 	public String toString() {
 		return farsi + " - " + english;
 	}

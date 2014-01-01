@@ -33,7 +33,7 @@ public class LetterItem implements Serializable {
 			new LetterItem("zɐd", "ﺽ", "ﺿ", "ـضـ", "ـض", R.raw.ze),
 			new LetterItem("tɐ", "ﻁ", "ﻃ", "ـطـ", "ـط", R.raw.te),
 			new LetterItem("zɐ", "ﻅ", "ﻇ", "ـظـ", "ـظ", R.raw.ze),
-			new LetterItem("ʿeyn", "ﻉ", "ﻋ", "ـعـ", "ـع", R.raw.eh),
+			new LetterItem("eyn", "ﻉ", "ﻋ", "ـعـ", "ـع", R.raw.eh),
 			new LetterItem("ɣeyn", "ﻍ", "ﻏ", "ـغـ", "ـغ", R.raw.ghe),
 			new LetterItem("fe", "ﻑ", "ﻓ", "ـفـ", "ـف", R.raw.fe),
 			new LetterItem("ɣɐf", "ﻕ", "ﻗ", "ـقـ", "ـق", R.raw.ghe),

@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.content.res.Configuration;
 
 import android.os.Bundle;
-import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 
@@ -23,6 +22,7 @@ import android.widget.ArrayAdapter;
 
 import android.widget.ListView;
 
+
 /**
  * @author michele.sama@gmail.com
  * @author panteha.s@gmail.com
@@ -32,7 +32,7 @@ public class MainActivity extends Activity {
 
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
-	private ActionBarDrawerToggle mDrawerToggle;
+	// private ActionBarDrawerToggle mDrawerToggle;
 
 	private CharSequence mDrawerTitle;
 	private CharSequence mTitle;
@@ -47,8 +47,8 @@ public class MainActivity extends Activity {
 
 		mTitle = mDrawerTitle = getTitle();
 		mPlanetTitles = getResources().getStringArray(R.array.planets_array);
-		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-		mDrawerList = (ListView) findViewById(R.id.left_drawer);
+		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_main);
+		mDrawerList = (ListView) findViewById(R.id.main_drawer);
 
 		// set a custom shadow that overlays the main content when the drawer
 		// opens
@@ -56,8 +56,10 @@ public class MainActivity extends Activity {
 				GravityCompat.START);
 		// set up the drawer's list view with items and click listener
 		mDrawerList.setAdapter(new ArrayAdapter<String>(this,
-				R.layout.drawer_list_item, mPlanetTitles));
+				android.R.layout.simple_list_item_1, android.R.id.text1,
+				mPlanetTitles));
 		mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+		// mDrawerLayout.setDrawerListener(mDrawerToggle);
 
 		// enable ActionBar app icon to behave as action to toggle nav drawer
 		getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -65,30 +67,26 @@ public class MainActivity extends Activity {
 
 		// ActionBarDrawerToggle ties together the the proper interactions
 		// between the sliding drawer and the action bar app icon
-		mDrawerToggle = new ActionBarDrawerToggle(this, /* host Activity */
-		mDrawerLayout, /* DrawerLayout object */
-		R.drawable.ic_drawer, /* nav drawer image to replace 'Up' caret */
-		R.string.drawer_open, /* "open drawer" description for accessibility */
-		R.string.drawer_close /* "close drawer" description for accessibility */
-		) {
-			public void onDrawerClosed(View view) {
-				getActionBar().setTitle(mTitle);
-				invalidateOptionsMenu(); // creates call to
-											// onPrepareOptionsMenu()
-				
-			}
+		mDrawerLayout
+				.setDrawerListener(new DrawerLayout.SimpleDrawerListener() {
+					@Override
+					public void onDrawerClosed(View view) {
 
-			public void onDrawerOpened(View drawerView) {
-				showDialog("New words and sentences will be added shortly!",
-						getString(R.string.attention));
-				getActionBar().setTitle(mDrawerTitle);
-				invalidateOptionsMenu(); // creates call to
-											// onPrepareOptionsMenu()
-				
-			}
-		};
-		mDrawerLayout.setDrawerListener(mDrawerToggle);
+					}
 
+					@Override
+					public void onDrawerOpened(View drawerView) {
+						showDialog(
+								"New words and usefull sentences will be added shortly!",
+								getString(R.string.attention));
+						getActionBar().setTitle(mDrawerTitle);
+						invalidateOptionsMenu(); // creates call to
+						// onPrepareOptionsMenu()
+
+					}
+				});
+
+		mDrawerLayout.closeDrawer(mDrawerList);
 		if (savedInstanceState == null) {
 			selectItem(0);
 		}
@@ -102,13 +100,16 @@ public class MainActivity extends Activity {
 		// Add the buttons
 		builder.setNegativeButton(android.R.string.ok,
 				new DialogInterface.OnClickListener() {
+					@Override
 					public void onClick(DialogInterface dialog, int id) {
 						// User clicked OK button
 						dialog.dismiss();
+
 					}
 				});
 		builder.setPositiveButton(R.string.next,
 				new DialogInterface.OnClickListener() {
+					@Override
 					public void onClick(DialogInterface dialog, int id) {
 						// User cancelled the dialog
 						dialog.dismiss();
@@ -170,11 +171,13 @@ public class MainActivity extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 
-		if (mDrawerToggle.onOptionsItemSelected(item)) {
-			return true;
-		}
 		// Handle item selection
 		switch (item.getItemId()) {
+		case android.R.id.home: {
+			finish();
+			return true;
+		}
+
 		case R.id.action_numbers: {
 			Intent intent = new Intent(this.getApplicationContext(),
 					NumberPracticeActivity.class);
@@ -194,6 +197,7 @@ public class MainActivity extends Activity {
 			startActivity(intent);
 			return true;
 		}
+		
 		default: {
 			return super.onOptionsItemSelected(item);
 		}
@@ -206,21 +210,19 @@ public class MainActivity extends Activity {
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position,
 				long id) {
-		
+
 			selectItem(position);
 		}
-		
 
 	}
 
 	private void selectItem(int position) {
 		// update the main content by replacing fragments
-		
+
 		Fragment fragment = new FarsiFragment();
 		Bundle args = new Bundle();
 		args.putInt(FarsiFragment.ARG_PLANET_NUMBER, position);
 		fragment.setArguments(args);
-		
 
 		FragmentManager fragmentManager = getFragmentManager();
 		fragmentManager.beginTransaction()
@@ -247,24 +249,21 @@ public class MainActivity extends Activity {
 	protected void onPostCreate(Bundle savedInstanceState) {
 		super.onPostCreate(savedInstanceState);
 		// Sync the toggle state after onRestoreInstanceState has occurred.
-		mDrawerToggle.syncState();
+		// mDrawerToggle.syncState();
 	}
 
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);
 		// Pass any configuration change to the drawer toggls
-		mDrawerToggle.onConfigurationChanged(newConfig);
+		// mDrawerToggle.onConfigurationChanged(newConfig);
 	}
-	
-	protected void showDialog(String message, String title) {
 
+	protected void showDialog(String message, String title) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle(title).setMessage(message);
 		// Create the AlertDialog object and show it
 		builder.show();
 	}
-
-	
 
 }

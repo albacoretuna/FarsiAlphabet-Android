@@ -6,24 +6,30 @@ import com.google.ads.AdRequest;
 
 import com.google.ads.AdView;
 
-import android.annotation.TargetApi;
 import android.app.ActionBar;
+
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
+import android.content.res.Configuration;
+
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-
 import android.widget.TextView;
 
 public class LetterPracticeActivity extends FragmentActivity implements
@@ -47,6 +53,9 @@ public class LetterPracticeActivity extends FragmentActivity implements
 
 	private LetterItem letterItem;
 	private DummySectionFragment fragment;
+	// private ActionBarDrawerToggle actionBarDrawerToggle;
+	private DrawerLayout drawer;
+	private ListView navList;
 
 	// private AdView adView;
 
@@ -55,67 +64,122 @@ public class LetterPracticeActivity extends FragmentActivity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_letter_practice);
 
-		/*
-		 * // Create the adView adView = new AdView(this, AdSize.BANNER, "ID");
-		 * 
-		 * // Lookup your LinearLayout assuming it's been given // the attribute
-		 * android:id="@+id/mainLayout" FrameLayout layout =
-		 * (FrameLayout)findViewById(R.id.container);
-		 * 
-		 * // Add the adView to it layout.addView(adView);
-		 * 
-		 * // Initiate a generic request to load it with an ad adView.loadAd(new
-		 * AdRequest());
-		 */
-
+		// final ActionBar actionBar = getActionBar();
+		// actionBar.getThemedContext();
 		letterItem = (LetterItem) getIntent().getSerializableExtra(
 				LETTER_INTENT_EXTRA);
-		setTitle(getResources().getString(
-				R.string.title_activity_letter_practice)
-				+ letterItem.isolated + " (" + letterItem.name + ")");
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+				getApplicationContext(),
+				android.R.layout.simple_list_item_1,
+				android.R.id.text1,
+				new String[] {
+						letterItem.isolated + " (" + letterItem.name + " - "
+								+ getResources().getString(R.string.isolated)
+								+ ")",
+						letterItem.begin + " (" + letterItem.name + " - "
+								+ getResources().getString(R.string.begin)
+								+ ")",
+						letterItem.middle + " (" + letterItem.name + " - "
+								+ getResources().getString(R.string.middle)
+								+ ")",
+						letterItem.end + " (" + letterItem.name + " - "
+								+ getResources().getString(R.string.end) + ")", });
+
+		drawer = (DrawerLayout) findViewById(R.id.drawer_layout_letter);
+		navList = (ListView) findViewById(R.id.drawer);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+		getActionBar().setHomeButtonEnabled(true);
+
+		navList.setAdapter(adapter);
+		// actionBarDrawerToggle = new ActionBarDrawerToggle(this, /* host
+		// Activity */
+		// drawer, /* DrawerLayout object */
+		// R.drawable.ic_drawer, /* nav drawer icon to replace 'Up' caret */
+		// R.string.drawer_open, /* "open drawer" description */
+		// R.string.drawer_close /* "close drawer" description */
+		// );
+
+		// Set actionBarDrawerToggle as the DrawerListener
+		// drawer.setDrawerListener(actionBarDrawerToggle);
+
+		// getActionBar().setDisplayHomeAsUpEnabled(true);
+
+		// just styling option add shadow the right edge of the drawer
+		drawer.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
+
+		navList.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					final int pos, long id) {
+				fragment = new DummySectionFragment();
+				Bundle args = new Bundle();
+				String letter = "";
+				String isolatedLetter = "";
+				isolatedLetter = letterItem.isolated;
+				switch (pos) {
+				case ISOLATED: {
+					letter = letterItem.isolated;
+					break;
+				}
+				case BEGIN: {
+					letter = letterItem.begin;
+					break;
+				}
+				case MIDDLE: {
+					letter = letterItem.middle;
+					break;
+				}
+				case END: {
+					letter = letterItem.end;
+					break;
+				}
+				}
+				String[] value = { isolatedLetter, letter };
+				args.putStringArray(DummySectionFragment.ARG_LETTER_PHONOLOGY,
+						value);
+				// args.putString(DummySectionFragment.ARG_LETTER, letter);
+				fragment.setArguments(args);
+				getSupportFragmentManager().beginTransaction()
+						.replace(R.id.container, fragment).commit();
+
+				drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+				drawer.setDrawerListener(new DrawerLayout.SimpleDrawerListener() {
+					@Override
+					public void onDrawerClosed(View drawerView) {
+						super.onDrawerClosed(drawerView);
+
+					}
+
+				});
+				drawer.closeDrawer(navList);
+			}
+		});
+
+		// setTitle(getResources().getString(
+		// R.string.title_activity_letter_practice)
+		// + letterItem.isolated + " (" + letterItem.name + ")");
 
 		// Set up the action bar to show a dropdown list.
-		final ActionBar actionBar = getActionBar();
-		actionBar.setDisplayShowTitleEnabled(false);
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
-		// Show the Up button in the action bar.
-		actionBar.setDisplayHomeAsUpEnabled(true);
-
-		// Set up the dropdown list navigation in the action bar.
-		actionBar
-				.setListNavigationCallbacks(
-						// Specify a SpinnerAdapter to populate the dropdown
-						// list.
-						new ArrayAdapter<String>(
-								getActionBarThemedContextCompat(),
-								android.R.layout.simple_list_item_1,
-								android.R.id.text1, new String[] {
-										letterItem.isolated
-												+ " ("
-												+ letterItem.name
-												+ " - "
-												+ getResources().getString(
-														R.string.isolated)
-												+ ")",
-										letterItem.begin
-												+ " ("
-												+ letterItem.name
-												+ " - "
-												+ getResources().getString(
-														R.string.begin) + ")",
-										letterItem.middle
-												+ " ("
-												+ letterItem.name
-												+ " - "
-												+ getResources().getString(
-														R.string.middle) + ")",
-										letterItem.end
-												+ " ("
-												+ letterItem.name
-												+ " - "
-												+ getResources().getString(
-														R.string.end) + ")", }),
-						this);
+		// final ActionBar actionBar = getActionBar();
+		/*
+		 * actionBar.setDisplayShowTitleEnabled(false);
+		 * actionBar.setNavigationMode(ActionBar.DISPLAY_USE_LOGO); // Show the
+		 * Up button in the action bar.
+		 * actionBar.setDisplayHomeAsUpEnabled(true);
+		 * 
+		 * // Set up the dropdown list navigation in the action bar. actionBar
+		 * .setListNavigationCallbacks( // Specify a SpinnerAdapter to populate
+		 * the dropdown // list. new ArrayAdapter<String>(
+		 * getActionBarThemedContextCompat(),
+		 * android.R.layout.simple_list_item_1, android.R.id.text1, new String[]
+		 * { letterItem.isolated + " (" + letterItem.name + " - " +
+		 * getResources().getString( R.string.isolated) + ")", letterItem.begin
+		 * + " (" + letterItem.name + " - " + getResources().getString(
+		 * R.string.begin) + ")", letterItem.middle + " (" + letterItem.name +
+		 * " - " + getResources().getString( R.string.middle) + ")",
+		 * letterItem.end + " (" + letterItem.name + " - " +
+		 * getResources().getString( R.string.end) + ")", }), this);
+		 */
 		int startingIndex = getIntent().getIntExtra(INDEX_INTENT_EXTRA, BEGIN);
 		if (savedInstanceState == null) {
 			savedInstanceState = new Bundle();
@@ -130,29 +194,62 @@ public class LetterPracticeActivity extends FragmentActivity implements
 	 * simply returns the {@link android.app.Activity} if
 	 * <code>getThemedContext</code> is unavailable.
 	 */
-	@TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
-	private Context getActionBarThemedContextCompat() {
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-			return getActionBar().getThemedContext();
-		} else {
-			return this;
-		}
-	}
+	/*
+	 * @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH) private Context
+	 * getActionBarThemedContextCompat() { if (Build.VERSION.SDK_INT >=
+	 * Build.VERSION_CODES.ICE_CREAM_SANDWICH) { return
+	 * getActionBar().getThemedContext(); } else { return this; } }
+	 */
+
+	/*
+	 * @Override public void onRestoreInstanceState(Bundle savedInstanceState) {
+	 * // Restore the previously serialized current dropdown position. if
+	 * (savedInstanceState.containsKey(STATE_SELECTED_NAVIGATION_ITEM)) {
+	 * getActionBar().setSelectedNavigationItem(
+	 * savedInstanceState.getInt(STATE_SELECTED_NAVIGATION_ITEM)); } }
+	 * 
+	 * @Override public void onSaveInstanceState(Bundle outState) { // Serialize
+	 * the current dropdown position.
+	 * outState.putInt(STATE_SELECTED_NAVIGATION_ITEM, getActionBar()
+	 * .getSelectedNavigationIndex()); }
+	 */
 
 	@Override
 	public void onRestoreInstanceState(Bundle savedInstanceState) {
 		// Restore the previously serialized current dropdown position.
 		if (savedInstanceState.containsKey(STATE_SELECTED_NAVIGATION_ITEM)) {
-			getActionBar().setSelectedNavigationItem(
-					savedInstanceState.getInt(STATE_SELECTED_NAVIGATION_ITEM));
-		}
-	}
+			fragment = new DummySectionFragment();
+			Bundle args = new Bundle();
+			String letter = "";
+			String isolatedLetter = "";
+			isolatedLetter = letterItem.isolated;
+			switch (savedInstanceState.getInt(STATE_SELECTED_NAVIGATION_ITEM)) {
+			case ISOLATED: {
+				letter = letterItem.isolated;
+				break;
+			}
+			case BEGIN: {
+				letter = letterItem.begin;
+				break;
+			}
+			case MIDDLE: {
+				letter = letterItem.middle;
+				break;
+			}
+			case END: {
+				letter = letterItem.end;
+				break;
+			}
+			}
+			String[] value = { isolatedLetter, letter };
+			args.putStringArray(DummySectionFragment.ARG_LETTER_PHONOLOGY,
+					value);
+			// args.putString(DummySectionFragment.ARG_LETTER, letter);
+			fragment.setArguments(args);
+			getSupportFragmentManager().beginTransaction()
+					.replace(R.id.container, fragment).commit();
 
-	@Override
-	public void onSaveInstanceState(Bundle outState) {
-		// Serialize the current dropdown position.
-		outState.putInt(STATE_SELECTED_NAVIGATION_ITEM, getActionBar()
-				.getSelectedNavigationIndex());
+		}
 	}
 
 	@Override
@@ -164,7 +261,38 @@ public class LetterPracticeActivity extends FragmentActivity implements
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+
 		switch (item.getItemId()) {
+		case R.id.action_snapshot: {
+
+			ShareScreenShot shareScreenShot = new ShareScreenShot();
+			View _rootView = findViewById(android.R.id.content).getRootView();
+			Uri screenshotUri = shareScreenShot.saveScreenShot(shareScreenShot
+					.takeScreenShot(_rootView));
+
+			// send an email
+
+			if (screenshotUri != null) {
+				startActivity(Intent.createChooser(
+						shareScreenShot.sendEmail(screenshotUri),
+						"Send mail..."));
+			}
+
+			// send an email
+			/*
+			 * final Intent emailIntent = new Intent(
+			 * android.content.Intent.ACTION_SEND);
+			 * emailIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			 * emailIntent.putExtra(Intent.EXTRA_STREAM, screenshotUri);
+			 * 
+			 * emailIntent.setType("image/png");
+			 * 
+			 * startActivity(Intent.createChooser(emailIntent,
+			 * "Send email using"));
+			 */
+
+			return true;
+		}
 		case android.R.id.home: {
 			// This ID represents the Home or Up button. In the case of this
 			// activity, the Up button is shown. Use NavUtils to allow users
@@ -188,45 +316,33 @@ public class LetterPracticeActivity extends FragmentActivity implements
 			startActivity(intent);
 			return true;
 		}
+		case R.id.action_drawer: {
+			drawer.openDrawer(navList);
+			return true;
+
+			// drawer.openDrawer(mDrawerList_right);
+		}
+
 		}
 		return super.onOptionsItemSelected(item);
 	}
 
-	@Override
-	public boolean onNavigationItemSelected(int position, long id) {
-		// When the given dropdown item is selected, show its contents in the
-		// container view.
-		fragment = new DummySectionFragment();
-		Bundle args = new Bundle();
-		String letter = "";
-		String isolatedLetter = "";
-		isolatedLetter = letterItem.isolated;
-		switch (position) {
-		case ISOLATED: {
-			letter = letterItem.isolated;
-			break;
-		}
-		case BEGIN: {
-			letter = letterItem.begin;
-			break;
-		}
-		case MIDDLE: {
-			letter = letterItem.middle;
-			break;
-		}
-		case END: {
-			letter = letterItem.end;
-			break;
-		}
-		}
-		String[] value = { isolatedLetter, letter };
-		args.putStringArray(DummySectionFragment.ARG_LETTER_PHONOLOGY, value);
-		// args.putString(DummySectionFragment.ARG_LETTER, letter);
-		fragment.setArguments(args);
-		getSupportFragmentManager().beginTransaction()
-				.replace(R.id.container, fragment).commit();
-		return true;
-	}
+	/*
+	 * @Override public boolean onNavigationItemSelected(int position, long id)
+	 * { // When the given dropdown item is selected, show its contents in the
+	 * // container view. fragment = new DummySectionFragment(); Bundle args =
+	 * new Bundle(); String letter = ""; String isolatedLetter = "";
+	 * isolatedLetter = letterItem.isolated; switch (position) { case ISOLATED:
+	 * { letter = letterItem.isolated; break; } case BEGIN: { letter =
+	 * letterItem.begin; break; } case MIDDLE: { letter = letterItem.middle;
+	 * break; } case END: { letter = letterItem.end; break; } } String[] value =
+	 * { isolatedLetter, letter };
+	 * args.putStringArray(DummySectionFragment.ARG_LETTER_PHONOLOGY, value); //
+	 * args.putString(DummySectionFragment.ARG_LETTER, letter);
+	 * fragment.setArguments(args);
+	 * getSupportFragmentManager().beginTransaction() .replace(R.id.container,
+	 * fragment).commit(); return true; }
+	 */
 
 	/**
 	 * A dummy fragment representing a section of the app, but that simply
@@ -250,7 +366,6 @@ public class LetterPracticeActivity extends FragmentActivity implements
 			canvas = (CanvasTextView) rootView
 					.findViewById(R.id.letterPracticeCanvas);
 			canvas.setText(getArguments().getStringArray(ARG_LETTER_PHONOLOGY)[1]);
-			
 
 			phonologyCanvasLetters = (TextView) rootView
 					.findViewById(R.id.pronounciationPhonology);
@@ -261,7 +376,7 @@ public class LetterPracticeActivity extends FragmentActivity implements
 				phonologyCanvasLetters
 						.setText(createTextPhonology(letterPhonologyItems));
 			}
-            // load add
+			// load add
 			AdView adView = (AdView) rootView.findViewById(R.id.ad);
 			if (adView != null) {
 				adView.loadAd(new AdRequest());
@@ -289,6 +404,16 @@ public class LetterPracticeActivity extends FragmentActivity implements
 		}
 	}
 
-	
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig);
+		// actionBarDrawerToggle.onConfigurationChanged(newConfig);
+	}
+
+	@Override
+	public boolean onNavigationItemSelected(int itemPosition, long itemId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 }
